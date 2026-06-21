@@ -481,7 +481,7 @@
 </head>
 <body>
 
-    <!-- BARRE D'APPLICATION -->
+    <!-- BARRE D'APPLICATION (SANS EMOJI) -->
     <div class="app-bar">
         <div class="logo-area">
             <svg class="logo-svg" viewBox="0 0 24 24">
@@ -491,10 +491,16 @@
         </div>
 
         <div class="nav-tabs">
-            <a href="index.html" class="btn" style="padding: 0 16px; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center;">
+            <a href="index.html" class="btn" style="padding: 0 16px; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                <svg style="width:14px; height:14px; fill:currentColor;" viewBox="0 0 24 24">
+                    <path d="M2,12A10,10 0 0,1 12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12M10,17L15,12L10,7V17Z" />
+                </svg>
                 Réviser
             </a>
-            <button class="btn" id="btn-open-settings" style="font-size: 0.85rem;">
+            <button class="btn" id="btn-open-settings" style="font-size: 0.85rem; display: inline-flex; align-items: center; gap: 8px;">
+                <svg style="width:14px; height:14px; fill:currentColor;" viewBox="0 0 24 24">
+                    <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.47,2.42C14.43,2.18 14.22,2 14,2H10C9.78,2 9.57,2.18 9.53,2.42L9.14,5.08C8.53,5.34 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.53,18.66 9.14,18.92L9.53,21.58C9.57,21.82 9.78,22 10,22H14C14.22,22 14.43,21.82 14.47,21.58L14.86,18.92C15.47,18.66 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+                </svg>
                 Paramètres
             </button>
             <button class="action-icon-btn" id="theme-toggle" title="Changer de thème">
@@ -633,12 +639,18 @@
 
             <!-- TABLEAU DES DATES ET FILTRES (PANNEAU DROIT) -->
             <div>
-                <!-- Outils de sauvegarde -->
+                <!-- Outils de sauvegarde (SANS EMOJI) -->
                 <div class="sync-row">
-                    <button class="btn" id="btn-load-server">
+                    <button class="btn" id="btn-load-server" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <svg style="width:16px; height:16px; fill:currentColor;" viewBox="0 0 24 24">
+                            <path d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H21V3L17.65,6.35Z" />
+                        </svg>
                         Restaurer de revis-brevet.json
                     </button>
-                    <button class="btn" id="btn-export-json" style="background-color: var(--accent-color); color: var(--accent-text); border: none;">
+                    <button class="btn" id="btn-export-json" style="background-color: var(--accent-color); color: var(--accent-text); border: none; display: inline-flex; align-items: center; gap: 8px;">
+                        <svg style="width:16px; height:16px; fill:currentColor;" viewBox="0 0 24 24">
+                            <path d="M5,20H19V18H5V20M19,9H15V3H9V9H5L12,16L19,9Z" />
+                        </svg>
                         Télécharger revis-brevet.json
                     </button>
                 </div>
@@ -727,7 +739,12 @@
     </div>
 
     <script>
-        const CONFIG_JSON_URL = "http://127.0.0.1:5500/revis-brevet.json";
+        // RESOLUTION DYNAMIQUE ET RELATIVE : Détecte l'URL de base de la page hôte
+        const CONFIG_JSON_URL = (() => {
+            const href = window.location.href.split('?')[0].split('#')[0];
+            const lastSlash = href.lastIndexOf('/');
+            return href.substring(0, lastSlash + 1) + 'revis-brevet.json';
+        })();
         
         let db = { settings: { subjects: [], themes: [], chapters: [] }, dates: [] };
         let draggedElement = null; 
@@ -794,27 +811,62 @@
             if (el) el.required = isReq;
         }
 
-        // --- CHARGEMENT DU JSON ---
+        // --- CHARGEMENT DU JSON AVEC SYNCHRONISATION ARRIÈRE-PLAN ---
         async function loadDataset() {
             const stored = localStorage.getItem('brevet_dates_db');
+            let hasLocalData = false;
+
+            // Chargement instantané depuis le cache local (localStorage) s'il existe
             if(stored) {
                 parseDatabase(JSON.parse(stored));
                 renderConfigTable();
-                return;
+                hasLocalData = true;
             }
 
+            // Requête asynchrone systématique pour voir si le fichier serveur (revis-brevet.json) a été mis à jour
             try {
                 const response = await fetch(CONFIG_JSON_URL);
                 if (response.ok) {
-                    db = await response.json();
-                    saveToLocalStorage();
-                    renderConfigTable();
-                    showToast("Dates et paramètres rechargés", "info");
+                    const fetchedDb = await response.json();
+                    
+                    if (!hasLocalData) {
+                        // Cas initial où rien n'était en cache
+                        db = fetchedDb;
+                        saveToLocalStorage();
+                        renderConfigTable();
+                        showToast("Dates et paramètres rechargés", "info");
+                    } else {
+                        // Comparaison pour détecter d'éventuels changements sur le serveur
+                        const localString = JSON.stringify(db);
+                        const fetchedString = JSON.stringify(fetchedDb);
+
+                        if (normalizeJSON(localString) !== normalizeJSON(fetchedString)) {
+                            // Mise à jour automatique des données
+                            db = fetchedDb;
+                            saveToLocalStorage();
+                            renderConfigTable();
+                            showToast("Mise à jour détectée et synchronisée depuis revis-brevet.json !", "info");
+                        } else {
+                            console.log("Les données locales sont déjà synchronisées avec le serveur.");
+                        }
+                    }
                 }
             } catch (error) {
-                db = { settings: { subjects: [], themes: [], chapters: [] }, dates: [] };
-                renderConfigTable();
-                showToast("Prêt à configurer vos premières fiches.", "info");
+                console.warn("Impossible de contacter le serveur de synchronisation :", error);
+                if (!hasLocalData) {
+                    db = { settings: { subjects: [], themes: [], chapters: [] }, dates: [] };
+                    renderConfigTable();
+                    showToast("Prêt à configurer vos premières fiches (hors ligne).", "info");
+                }
+            }
+        }
+
+        // Normalisation minimale pour éviter de fausses alertes sur des sauts de ligne ou espaces
+        function normalizeJSON(jsonStr) {
+            try {
+                return JSON.stringify(JSON.parse(jsonStr));
+            } catch(e) {
+                return jsonStr;
             }
         }
 
@@ -1152,16 +1204,16 @@
                 subRow.innerHTML = `
                     <span>${subject.name}</span>
                     <div class="tree-node-actions">
-                        <button class="tree-mini-btn" onclick="moveSubject('${subject.id}', 'up')" title="Monter">
+                        <button class="tree-mini-btn" type="button" onclick="moveSubject('${subject.id}', 'up')" title="Monter">
                             <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"/></svg>
                         </button>
-                        <button class="tree-mini-btn" onclick="moveSubject('${subject.id}', 'down')" title="Descendre">
+                        <button class="tree-mini-btn" type="button" onclick="moveSubject('${subject.id}', 'down')" title="Descendre">
                             <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
                         </button>
-                        <button class="tree-mini-btn" onclick="addThemeInline('${subject.id}')" title="Ajouter un Thème" style="color:var(--accent-color);">
+                        <button class="tree-mini-btn" type="button" onclick="addThemeInline('${subject.id}')" title="Ajouter un Thème" style="color:var(--accent-color);">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-1.41 1.41a4.99 4.99 0 0 0-1.41-1.41L12 11.58l.71-.71z"/></svg>
                         </button>
-                        <button class="tree-mini-btn danger-hover" onclick="deleteSubject('${subject.id}')" title="Supprimer">
+                        <button class="tree-mini-btn danger-hover" type="button" onclick="deleteSubject('${subject.id}')" title="Supprimer">
                             <svg viewBox="0 0 24 24"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/></svg>
                         </button>
                     </div>
@@ -1187,16 +1239,16 @@
                     themeRow.innerHTML = `
                         <span>${theme.name}</span>
                         <div class="tree-node-actions">
-                            <button class="tree-mini-btn" onclick="moveTheme('${theme.id}', 'up')" title="Monter">
+                            <button class="tree-mini-btn" type="button" onclick="moveTheme('${theme.id}', 'up')" title="Monter">
                                 <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"/></svg>
-                            </button>
-                            <button class="tree-mini-btn" onclick="moveTheme('${theme.id}', 'down')" title="Descendre">
+                        </button>
+                            <button class="tree-mini-btn" type="button" onclick="moveTheme('${theme.id}', 'down')" title="Descendre">
                                 <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
-                            </button>
-                            <button class="tree-mini-btn" onclick="addChapterInline('${subject.id}', '${theme.id}')" title="Ajouter un chapitre" style="color:var(--success-color);">
+                        </button>
+                            <button class="tree-mini-btn" type="button" onclick="addChapterInline('${subject.id}', '${theme.id}')" title="Ajouter un chapitre" style="color:var(--success-color);">
                                 <svg viewBox="0 0 24 24"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/></svg>
                             </button>
-                            <button class="tree-mini-btn danger-hover" onclick="deleteTheme('${theme.id}')" title="Supprimer">
+                            <button class="tree-mini-btn danger-hover" type="button" onclick="deleteTheme('${theme.id}')" title="Supprimer">
                                 <svg viewBox="0 0 24 24"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/></svg>
                             </button>
                         </div>
@@ -1226,10 +1278,10 @@
             row.innerHTML = `
                 <span>${chap.name}</span>
                 <div class="tree-node-actions">
-                    <button class="tree-mini-btn" onclick="renameChapter('${chap.id}')" title="Renommer">
-                        ✏️
+                    <button class="tree-mini-btn" type="button" onclick="renameChapter('${chap.id}')" title="Renommer">
+                        <svg viewBox="0 0 24 24" style="width:12px; height:12px;"><path d="M14.06,9L15,9.94L5.92,19H5V18.06L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z"/></svg>
                     </button>
-                    <button class="tree-mini-btn danger-hover" onclick="deleteChapter('${chap.id}')" title="Supprimer">
+                    <button class="tree-mini-btn danger-hover" type="button" onclick="deleteChapter('${chap.id}')" title="Supprimer">
                         <svg viewBox="0 0 24 24" style="width:12px; height:12px;"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/></svg>
                     </button>
                 </div>

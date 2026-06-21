@@ -136,7 +136,7 @@
         .setup-wrapper {
             margin: auto;
             width: 100%;
-            max-width: 520px;
+            max-width: 480px;
         }
 
         .card {
@@ -601,7 +601,7 @@
 </head>
 <body>
 
-    <!-- BARRE D'APPLICATION (STYLE ADWAITA) -->
+    <!-- BARRE D'APPLICATION (STYLE ADWAITA - SANS EMOJI) -->
     <div class="app-bar">
         <div class="logo-area">
             <svg class="logo-svg" viewBox="0 0 24 24">
@@ -614,6 +614,12 @@
         </div>
 
         <div class="nav-tabs">
+            <a href="configurator.html" class="btn" style="padding: 6px 14px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px;">
+                <svg style="width:14px; height:14px; fill:currentColor;" viewBox="0 0 24 24">
+                    <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.47,2.42C14.43,2.18 14.22,2 14,2H10C9.78,2 9.57,2.18 9.53,2.42L9.14,5.08C8.53,5.34 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.21,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.21,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.94C7.96,18.34 8.53,18.66 9.14,18.92L9.53,21.58C9.57,21.82 9.78,22 10,22H14C14.22,22 14.43,21.82 14.47,21.58L14.86,18.92C15.47,18.66 16.04,18.34 16.56,17.94L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+                </svg>
+                Configurateur
+            </a>
             <button class="action-icon-btn" id="theme-toggle" title="Changer de thème">
                 <svg style="width:18px; height:18px; fill:currentColor;" viewBox="0 0 24 24">
                     <path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z" />
@@ -625,7 +631,7 @@
     <!-- ZONE DE CONTENU PRINCIPAL -->
     <div class="view-container">
         
-        <!-- MODULE DE REPRISE DE SESSION -->
+        <!-- MODULE DE REPRISE DE SESSION (SANS EMOJI) -->
         <div id="resume-session-banner" class="card hidden" style="margin-bottom: 24px; border: 1px solid var(--accent-color); background-color: rgba(129, 61, 156, 0.05); text-align: center;">
             <p style="margin-top: 0; font-weight: 600;">Une session de révision précédemment interrompue a été détectée.</p>
             <div style="display: flex; gap: 12px; justify-content: center;">
@@ -698,9 +704,12 @@
         <!-- ZONE IMMERSIF CENTRÉE -->
         <div id="revise-game" class="immersive-view hidden">
             
-            <!-- Bouton Quitter -->
-            <button class="btn" id="quit-session-btn" style="position: absolute; top: 24px; left: 24px; padding: 8px 16px;">
-                ⬅️ Quitter
+            <!-- Bouton Quitter (SANS EMOJI) -->
+            <button class="btn" id="quit-session-btn" style="position: absolute; top: 24px; left: 24px; padding: 8px 16px; display: inline-flex; align-items: center; gap: 8px;">
+                <svg style="width:14px; height:14px; fill:currentColor;" viewBox="0 0 24 24">
+                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.16L13.5,5.58L8,11H20Z" />
+                </svg>
+                Quitter
             </button>
 
             <!-- Indicateur de score -->
@@ -835,8 +844,12 @@
     </div>
 
     <script>
-        // CONFIGURATION : Cible globale de l'arborescence complète
-        const CONFIG_JSON_URL = "http://127.0.0.1:5500/revis-brevet.json";
+        // RESOLUTION DYNAMIQUE ET RELATIVE : Détecte l'URL de base de la page hôte
+        const CONFIG_JSON_URL = (() => {
+            const href = window.location.href.split('?')[0].split('#')[0];
+            const lastSlash = href.lastIndexOf('/');
+            return href.substring(0, lastSlash + 1) + 'revis-brevet.json';
+        })();
 
         let db = { settings: { subjects: [], themes: [], chapters: [] }, dates: [] };
         let activeSession = [];
@@ -1413,7 +1426,7 @@
             area.addEventListener('touchend', (e) => endDrag(e.changedTouches[0].clientX));
         }
 
-        // --- INTERFACE : QUIZ INTERACTIF (SANS REPROPOSITION DE CARTES FAUSSES) ---
+        // --- INTERFACE : QUIZ INTERACTIF ---
 
         function showQuizQuestion() {
             if(currentIdx >= activeSession.length) {
@@ -1438,11 +1451,9 @@
             document.getElementById('quiz-meta').textContent = `Question ${currentIdx + 1}/${activeSession.length} — ${chapName}`;
 
             if(item.type === 'definition') {
-                // Définition : Toujours de Définition ➔ Terme
                 document.getElementById('quiz-question-text').textContent = `Quel terme correspond à cette définition : "${item.definition}" ?`;
                 answerInput.placeholder = "Saisissez le terme...";
             } else if(item.type === 'formula') {
-                // Formule : Toujours de Formule ➔ Nom
                 document.getElementById('quiz-question-text').innerHTML = `Quelle formule correspond au nom suivant : <strong>"${item.formulaName}"</strong> ?`;
                 answerInput.placeholder = "Saisissez la notation...";
             } else {
@@ -1649,7 +1660,7 @@
             
             if(type === 'warning') {
                 icon.style.fill = 'var(--error-color)';
-                icon.innerHTML = `<path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>`;
+                icon.innerHTML = `<path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>`;
             } else {
                 icon.style.fill = 'var(--accent-color)';
                 icon.innerHTML = `<path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>`;
