@@ -4,6 +4,10 @@
       {
         "id": "sub_histoire",
         "name": "Histoire"
+      },
+      {
+        "id": "sub_1782047711582",
+        "name": "Français"
       }
     ],
     "themes": [
@@ -21,6 +25,11 @@
         "id": "t_1781706103112",
         "name": "Françaises et Français dans une république repensée",
         "subjectId": "sub_histoire"
+      },
+      {
+        "id": "t_1782047820553",
+        "subjectId": "sub_1782047711582",
+        "name": "Étude de la langue"
       }
     ],
     "chapters": [
@@ -89,6 +98,36 @@
         "themeId": "t_1781706103112",
         "name": "La société française des années 1950 aux années 1980",
         "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1782047836602",
+        "subjectId": "sub_1782047711582",
+        "themeId": "t_1782047820553",
+        "name": "Les fonctions syntaxiques"
+      },
+      {
+        "id": "c_1782048670864",
+        "subjectId": "sub_1782047711582",
+        "themeId": "t_1782047820553",
+        "name": "Les classes de mots (les natures)"
+      },
+      {
+        "id": "c_1782048809648",
+        "subjectId": "sub_1782047711582",
+        "themeId": "t_1782047820553",
+        "name": "L'analyse de la phrase"
+      },
+      {
+        "id": "c_1782048945997",
+        "subjectId": "sub_1782047711582",
+        "themeId": "t_1782047820553",
+        "name": "Lexique & Sémantique"
+      },
+      {
+        "id": "c_1782049561362",
+        "subjectId": "sub_1782047711582",
+        "themeId": "t_1782047820553",
+        "name": "Les figures de style"
       }
     ]
   },
@@ -934,7 +973,7 @@
       "date": "1973 ET 1979",
       "dateFormat": "Année",
       "event": "Chocs pétroliers",
-      "explanation": "La croissance économique est stoppée par les chocs pétroliers de 1973 et 1979."
+      "explanation": "La croissance économique is stoppée par les chocs pétroliers de 1973 et 1979."
     },
     {
       "id": "card_88_1781891694",
@@ -1021,6 +1060,357 @@
       "dateFormat": "Année",
       "event": "Mariage pour tous",
       "explanation": "Le mariage pour les couples de même sexe est (enfin!) légalisé."
+    },
+    {
+      "id": "card_1782048342180",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "Complément d'Objet Direct. Exemple : Il compile le code. (« le code » est COD).",
+      "term": "COD",
+      "definition": "Groupe nominal ou pronom directement relié au verbe, sans préposition. Il répond à la question « Qui ? » ou « Quoi ? » posée après le verbe."
+    },
+    {
+      "id": "card_1782048383363",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "Complément d'Objet Indirect. Exemple : Il parle à son ami. (« à son ami » est COI).",
+      "term": "COI",
+      "definition": "Groupe nominal ou prépositionnel relié au verbe par une préposition (à, de). Il répond à la question « À qui ? », « À quoi ? », « De qui ? », « De quoi ? »."
+    },
+    {
+      "id": "card_1782048403179",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "Il commande l'accord du verbe en personne et en nombre. Exemple : Le serveur redémarre.",
+      "term": "Sujet",
+      "definition": "Mot ou groupe de mots qui réalise l'action ou subit l'état exprimé par le verbe. On le trouve en posant la question « Qui est-ce qui ? » ou « Qu'est-ce qui ? »."
+    },
+    {
+      "id": "card_1782048426779",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782047836602",
+      "explanation": "Il s'accorde en genre et en nombre avec le sujet. Exemple : Ce langage paraît simple. (« simple » est attribut du sujet « Ce langage »).",
+      "term": "Attribut du sujet",
+      "definition": "Mot ou groupe de mots qui exprime une caractéristique ou une qualité du sujet par l'intermédiaire d'un verbe d'état (être, paraître, sembler, devenir, avoir l'air...)."
+    },
+    {
+      "id": "card_1782048447278",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782047836602",
+      "explanation": "Elle fait partie du groupe nominal et peut être supprimée. Exemple : Une fonction puissante. (« puissante » est épithète de « fonction »).",
+      "term": "Épithète",
+      "definition": "Adjectif qualificatif placé directement à côté du nom qu'il qualifie (avant ou après), sans aucun mot intermédiaire."
+    },
+    {
+      "id": "card_1782048491781",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782047836602",
+      "explanation": "= CDN\nIl appartient au groupe nominal. Exemple : Une carte de révision. (« de révision » est le CDN de « carte »).",
+      "term": "Complément du nom",
+      "definition": "Groupe de mots (souvent un nom ou un infinitif) introduit par une préposition (de, à, en...) qui vient préciser le sens d'un nom."
+    },
+    {
+      "id": "card_1782048604678",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782047836602",
+      "explanation": "Exemple : Ce framework, un outil moderne, fait gagner du temps. (« un outil moderne » est mis en apposition au nom « framework »).",
+      "term": "Apposition",
+      "definition": "Mot ou groupe de mots (souvent un nom ou un adjectif) placé à côté du nom qu'il qualifie, mais séparé de lui par une virgule."
+    },
+    {
+      "id": "card_1782048632218",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "Exemple : Il révise tous les soirs (CC de temps) dans sa chambre (CC de lieu).",
+      "term": "Complément circonstanciel",
+      "definition": "Mot ou groupe de mots qui indique les circonstances de l'action (le temps, le lieu, la cause, le but, le moyen...). Il peut généralement être déplacé ou supprimé."
+    },
+    {
+      "id": "card_1782048699344",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782048670864",
+      "explanation": "Les variables : noms, déterminants, adjectifs, pronoms, verbes. Les invariables : adverbes, prépositions, conjonctions, interjections.",
+      "term": "Variable / Invariable",
+      "definition": "Une classe de mots est variable si le mot change de forme (genre, nombre, personne). Elle est invariable si le mot s'écrit toujours de la même façon."
+    },
+    {
+      "id": "card_1782048719028",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782048670864",
+      "explanation": "Exemples : rapidement, très, hier, heureusement, ne... pas.",
+      "term": "Adverbe",
+      "definition": "Mot invariable qui sert à modifier, préciser ou intensifier le sens d'un verbe, d'un adjectif, d'un autre adverbe ou d'une phrase entière."
+    },
+    {
+      "id": "card_1782048733844",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782048670864",
+      "explanation": "Moyen mnémotechnique classique : À, dans, par, pour, en, vers, avec, de, sans, sous.",
+      "term": "Préposition",
+      "definition": "Mot invariable qui sert à introduire un complément (un complément du nom, un COI ou un complément circonstanciel)."
+    },
+    {
+      "id": "card_1782048760944",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782048670864",
+      "explanation": "La liste exacte à retenir : Mais, ou, et, donc, or, ni, car.",
+      "term": "Conjonction de coordination",
+      "definition": "Mot invariable qui sert à relier deux mots, deux groupes de mots ou deux propositions de même nature ou de même fonction."
+    },
+    {
+      "id": "card_1782048791427",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782048670864",
+      "explanation": "Exemples : que, parce que, puisque, quand, comme, si, pour que.",
+      "term": "Conjonction de subordination",
+      "definition": "Mot invariable qui sert à relier une proposition subordonnée à la proposition principale dont elle dépend."
+    },
+    {
+      "id": "card_1782048848594",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782048809648",
+      "explanation": "Si un seul verbe : phrase simple (une proposition). Si plusieurs verbes : phrase complexe.",
+      "term": "Proposition",
+      "definition": "Groupe de mots organisé autour d'un verbe (généralement conjugué). Une phrase contient autant de propositions qu'elle contient de verbes conjugués."
+    },
+    {
+      "id": "card_1782048884177",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782048809648",
+      "explanation": "Exemple : Le script [que j'ai écrit] fonctionne. (« que j'ai écrit » complète le nom « script »).",
+      "term": "Proposition subordonnée relative",
+      "definition": "Proposition introduite par un pronom relatif (qui, que, dont, où...) qui vient compléter un nom ou un pronom appelé « l'antécédent ». Sa fonction est presque toujours « complément de l'antécédent »."
+    },
+    {
+      "id": "card_1782048906960",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782048809648",
+      "explanation": "Je pense [que le site est prêt]. (Le bloc entre crochets est le COD du verbe « pense »).",
+      "term": "Proposition subordonnée complétive (conjonctive)",
+      "definition": "Proposition introduite par la conjonction « que » qui vient compléter un verbe. Elle occupe généralement la fonction de COD de ce verbe."
+    },
+    {
+      "id": "card_1782048922777",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782048945997",
+      "explanation": "Indispensable dans les questions de lecture au Brevet pour repérer l'atmosphère ou l'intention d'un texte.",
+      "term": "Champ lexical",
+      "definition": "Ensemble de mots (noms, verbes, adjectifs...) qui, dans un texte, se rapportent à un même thème, une même idée ou un même domaine."
+    },
+    {
+      "id": "card_1782049020493",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782048945997",
+      "explanation": "La base de la formation des mots. Exemple : im- (préfixe) + port (radical) + -able (suffixe) = importable.",
+      "term": "Radical / Préfixe / Suffixe",
+      "definition": "Le radical donne le sens principal. Le préfixe se place avant le radical pour modifier son sens. Le suffixe se place après pour modifier le sens ou la classe grammaticale."
+    },
+    {
+      "id": "card_1782049462724",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782049561362",
+      "explanation": "Établit une ressemblance explicite.",
+      "term": "Comparaison",
+      "definition": "Rapproche deux éléments grâce à un outil de comparaison (comme, tel que, pareil à...)."
+    },
+    {
+      "id": "card_1782049494691",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782049561362",
+      "explanation": "Ressemblance plus directe, souvent plus poétique.",
+      "term": "Métaphore",
+      "definition": "Rapproche deux éléments sans outil de comparaison."
+    },
+    {
+      "id": "card_1782049509257",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782049561362",
+      "explanation": "Donne vie à un élément inanimé.",
+      "term": "Personnification",
+      "definition": "Attribue des traits, des sentiments ou des comportements humains à un objet ou un animal."
+    },
+    {
+      "id": "card_1782049526942",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782049561362",
+      "explanation": "Vise à impressionner ou mettre en relief.",
+      "term": "Hyperbole",
+      "definition": "Procédé qui consiste à exagérer les faits, les sentiments ou les idées."
+    },
+    {
+      "id": "card_1782049642028",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Crée un effet de rythme ou d'insistance.",
+      "term": "Anaphore",
+      "definition": "Répétition d'un même mot ou groupe de mots en début de plusieurs phrases ou vers."
+    },
+    {
+      "id": "card_1782049657607",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Donne une impression de quantité ou de précision.",
+      "term": "Énumération",
+      "definition": "Succession de plusieurs termes (souvent de même nature) pour créer un effet d'abondance."
+    },
+    {
+      "id": "card_1782049688273",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Souligne un contraste fort.",
+      "term": "Antithèse",
+      "definition": "Rapprochement, dans une même phrase, de deux idées ou mots opposés."
+    },
+    {
+      "id": "card_1782049702656",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Vise à atténuer la réalité.",
+      "term": "Euphémisme",
+      "definition": "Formulation adoucie d'une idée brutale, désagréable ou choquante."
+    },
+    {
+      "id": "card_1782049719590",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782049561362",
+      "explanation": "Évite la répétition ou enrichit la description.",
+      "term": "Périphrase",
+      "definition": "Remplacement d'un mot par une expression qui le définit (ex: \"le roi des animaux\" pour \"le lion\")."
+    },
+    {
+      "id": "card_1782049734723",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782049561362",
+      "explanation": "Crée une image paradoxale (ex: \"une obscure clarté\").",
+      "term": "Oxymore",
+      "definition": "Réunion de deux mots de sens opposés dans un même groupe nominal."
+    },
+    {
+      "id": "card_1782049789124",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Crée une harmonie imitative ou un effet musical.",
+      "term": "Allitération",
+      "definition": "Répétition d'un même son consonne dans une suite de mots rapprochés."
+    },
+    {
+      "id": "card_1782049800998",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Crée un effet sonore particulier.",
+      "term": "Assonance",
+      "definition": "Répétition d'un même son voyelle dans une suite de mots rapprochés."
+    },
+    {
+      "id": "card_1782049820207",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782049561362",
+      "explanation": "Organise une montée en tension ou une emphase.",
+      "term": "Gradation",
+      "definition": "Succession de termes d'intensité croissante (ou décroissante)."
+    },
+    {
+      "id": "card_1782049840639",
+      "type": "definition",
+      "level": 3,
+      "chapterId": "c_1782049561362",
+      "explanation": "Atténue l'expression pour souligner l'intensité (ex: \"Ce n'est pas mauvais\").",
+      "term": "Litote",
+      "definition": "Dire le moins pour suggérer le plus : nier le contraire de ce que l'on veut dire."
+    },
+    {
+      "id": "card_1782049853423",
+      "type": "definition",
+      "level": 3,
+      "chapterId": "c_1782049561362",
+      "explanation": "Souligne un lien logique ou une comparaison.",
+      "term": "Parallélisme",
+      "definition": "Répétition d'une même structure syntaxique dans deux groupes de mots ou phrases."
+    },
+    {
+      "id": "card_1782049871522",
+      "type": "definition",
+      "level": 4,
+      "chapterId": "c_1782049561362",
+      "explanation": "Met en valeur une opposition ou une unité (ex: \"Il faut manger pour vivre et non vivre pour manger\").",
+      "term": "Chiasme",
+      "definition": "Structure en miroir (A-B / B-A) qui inverse l'ordre des termes."
+    },
+    {
+      "id": "card_1782049898873",
+      "type": "definition",
+      "level": 4,
+      "chapterId": "c_1782049561362",
+      "explanation": "Désigne une réalité par un lien habituel (ex: \"Boire un verre\").",
+      "term": "Métonymie",
+      "definition": "Remplacement d'un mot par un autre qui lui est lié par un rapport logique (contenant pour le contenu, l'objet pour la matière)."
+    },
+    {
+      "id": "card_1782049916573",
+      "type": "definition",
+      "level": 5,
+      "chapterId": "c_1782049561362",
+      "explanation": "Donne une image concentrée (ex: \"Une voile\" pour un bateau).",
+      "term": "Synecdoque",
+      "definition": "Cas particulier de métonymie : désigner le tout par la partie (ou inversement)."
+    },
+    {
+      "id": "card_1782049929739",
+      "type": "definition",
+      "level": 5,
+      "chapterId": "c_1782049561362",
+      "explanation": "Fait d'un nom propre un nom commun pour qualifier le caractère.",
+      "term": "Antonomase",
+      "definition": "Remplacer un nom propre par un nom commun ou inversement (ex: \"Un harpagon\")."
+    },
+    {
+      "id": "card_1782050054888",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Ex. : la grande Faucheuse pour parler de la mort.",
+      "term": "Allégorie",
+      "definition": "L’allégorie est un récit ou une personnification symbolique d'une idée abstraite."
+    },
+    {
+      "id": "card_1782050119656",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782049561362",
+      "explanation": "Ex. : « Des liquides rouges, jaunes, verts, bruns, de toutes les nuances. » Bel‑Ami, Guy de Maupassant.",
+      "term": "L'accumulation",
+      "definition": "Elle consiste à énumérer des éléments pour donner une impression de grande quantité ou pour insister sur un aspect."
     }
   ]
 }
