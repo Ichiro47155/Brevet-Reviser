@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révisions brevet — Configurateur</title>
+    <style>
+        :root[data-theme="light"] {
+            --bg-color: #f6f5f4;
+            --card-bg: #ffffff;
+            --text-color: #2e3436;
+            --text-muted: #6e7273;
+            --border-color: #e1dedb;
+            --accent-color: #813d9c; /* Adwaita Purple Light */
+            --accent-hover: #69307f;
+            --accent-text: #ffffff;
+            --delete-color: #c01c28;
+            --delete-bg: #fbebeb;
+            --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        :root[data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --card-bg: #2d2d2d;
+            --text-color: #f6f5f4;
+            --text-muted: #9a9996;
+            --border-color: #3d3d3d;
+            --accent-color: #c061cb; /* Adwaita Purple Dark */
+            --accent-hover: #d27cd9;
+            --accent-text: #1e1e1e;
+            --delete-color: #ff7b63;
+            --delete-bg: #441a1a;
+            --shadow: 0 2px 8px rgba(0,0,0,0.2), 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 10;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .logo-svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--accent-color);
+        }
+
+        .view-container {
+            flex-grow: 1;
+            padding: 24px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .config-layout {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .config-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        select, input, textarea {
+            width: 100%;
+            font-family: inherit;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            outline: none;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        .btn {
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            height: 38px;
+        }
+
+        .btn:hover {
+            background-color: var(--border-color);
+        }
+
+        .btn.primary {
+            background-color: var(--accent-color);
+            color: var(--accent-text);
+            border: none;
+        }
+
+        .btn.primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn.danger {
+            background-color: transparent;
+            color: var(--delete-color);
+            border-color: var(--delete-color);
+        }
+
+        .btn.danger:hover {
+            background-color: var(--delete-bg);
+        }
+
+        .selector-display-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-color);
+            min-height: 42px;
+        }
+
+        .selector-display-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            width: 100%;
+        }
+
+        .search-container input {
+            flex-grow: 1;
+        }
+
+        .search-wrapper-icon {
+            position: relative;
+            flex-grow: 1;
+            display: flex;
+        }
+
+        .search-wrapper-icon input {
+            padding-left: 40px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            fill: var(--text-muted);
+        }
+
+        .level-filter-input {
+            width: 140px;
+            flex-shrink: 0;
+        }
+
+        .table-scroller {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--bg-color);
+            padding: 12px 16px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            background-color: var(--border-color);
+            color: var(--text-color);
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge.accent {
+            background-color: var(--accent-color);
+            color: var(--accent-text);
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .nav-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-icon-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .action-icon-btn:hover {
+            background-color: var(--border-color);
+        }
+
+        .action-icon-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .sync-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Modales */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            padding: 16px;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 540px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Structure en Arbre */
+        .tree-container {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 380px;
+            overflow-y: auto;
+        }
+
+        .tree-subject-node {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tree-theme-node {
+            margin-left: 15px;
+            border-left: 2px dashed var(--border-color);
+            padding-left: 10px;
+            margin-bottom: 8px;
+        }
+
+        .tree-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 8px;
+            border-radius: 6px;
+            margin-top: 4px;
+        }
+
+        .subject-row {
+            background-color: rgba(129, 61, 156, 0.08);
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .theme-row {
+            background-color: rgba(0, 0, 0, 0.03);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .chapter-row {
+            margin-left: 25px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+        }
+
+        .chapter-row.selectable {
+            cursor: pointer;
+        }
+        .chapter-row.selectable:hover {
+            border-color: var(--accent-color);
+            background-color: rgba(129, 61, 156, 0.05);
+        }
+
+        .tree-node-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .tree-mini-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+        }
+        .tree-mini-btn:hover {
+            background-color: var(--border-color);
+        }
+        .tree-mini-btn.danger-hover:hover {
+            background-color: var(--delete-bg);
+            color: var(--delete-color);
+            border-color: transparent;
+        }
+        .tree-mini-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        /* Drag and Drop */
+        .chapter-row[draggable="true"] {
+            cursor: grab;
+        }
+        .chapter-row.dragging {
+            opacity: 0.4;
+            border: 1px dashed var(--accent-color);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(150%);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 110;
+            font-weight: 500;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRE D'APPLICATION -->
+    <div class="app-bar">
+        <div class="logo-area">
+            <svg class="logo-svg" viewBox="0 0 24 24">
+                <path d="M12 2C11.45 2 11 2.45 11 3V7.16C9.37 7.64 8 9.13 8 11C8 12.08 8.44 13.07 9.14 13.8L12 16.66L14.86 13.8C15.56 13.07 16 12.08 16 11C16 9.13 14.63 7.64 13 7.16V3C13 2.45 12.55 2 12 2M12 9C13.1 9 14 9.9 14 11C14 11.55 13.78 12.05 13.41 12.41L12 13.83L10.59 12.41C10.22 12.05 10 11.55 10 11C10 9.9 10.9 9 12 9M11 18.5V21C11 21.55 11.45 22 12 22C12.55 22 13 21.55 13 21V18.5C14.63 18.02 16 16.53 16 14.66C16 14.28 15.93 13.9 15.81 13.55L12 17.36L8.19 13.55C8.07 13.9 8 14.28 8 14.66C8 16.53 9.37 18.02 11 18.5Z" />
+            </svg>
+            <span>Révisions brevet — Configurateur</span>
+        </div>
+
+        <div class="nav-tabs">
+            <a href="index.html" class="btn" style="padding: 0 16px; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center;">
+                Réviser
+            </a>
+            <button class="btn" id="btn-open-settings" style="font-size: 0.85rem;">
+                Paramètres
+            </button>
+            <button class="action-icon-btn" id="theme-toggle" title="Changer de thème">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2M12 4A8 8 0 0 1 20 12A8 8 0 0 1 12 20V4Z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- CONTENEUR PRINCIPAL -->
+    <div class="view-container">
+        
+        <div class="config-layout">
+            
+            <!-- FORMULAIRE (PANNEAU GAUCHE) -->
+            <div class="card" style="height: fit-content;">
+                <h2 id="editor-title">Ajouter une fiche</h2>
+                
+                <!-- Sélection de Type de Fiche -->
+                <div class="form-group">
+                    <label for="input-type">Type de fiche*</label>
+                    <select id="input-type" required>
+                        <option value="date">Date simple</option>
+                        <option value="plage">Plage de dates (Date de début & fin)</option>
+                        <option value="definition">Définition</option>
+                        <option value="formula">Formule (Scientifique)</option>
+                    </select>
+                </div>
+
+                <form id="editor-form" style="display: flex; flex-direction: column; gap: 4px;">
+                    <input type="hidden" id="edit-id" value="-1">
+                    
+                    <!-- CHAPITRE ET MATIERE RATTACHES (OBLIGATOIRE, ZERO TEXTE) -->
+                    <div class="form-group">
+                        <label>Chapitre & Matière rattachés*</label>
+                        <div class="selector-display-box" id="selector-display">
+                            <span class="selector-display-text" id="display-selected-text" style="color: var(--text-muted);">Aucun chapitre sélectionné</span>
+                            <button type="button" class="btn" id="btn-open-selector" style="height: 30px; padding: 0 10px; font-size: 0.75rem;">Choisir...</button>
+                        </div>
+                        <input type="hidden" id="input-chapter-id" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-level">Niveau (0 à 255)*</label>
+                        <input type="number" id="input-level" min="0" max="255" value="0" required>
+                    </div>
+
+                    <!-- BLOC DYNAMIQUE : DATE SIMPLE -->
+                    <div id="type-date-block">
+                        <div class="form-group">
+                            <label for="input-date">Date (string)*</label>
+                            <input type="text" id="input-date" placeholder="Ex: 18 juin 1940">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-format">Format requis*</label>
+                            <select id="input-format">
+                                <option value="Année">Année</option>
+                                <option value="Mois Année">Mois Année</option>
+                                <option value="Jour Mois Année">Jour Mois Année</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-event">Événement correspondant*</label>
+                            <textarea id="input-event" rows="2" placeholder="Description courte de l'événement..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- BLOC DYNAMIQUE : PLAGE DE DATES -->
+                    <div id="type-plage-block" class="hidden">
+                        <div class="form-group">
+                            <label for="input-plage-start">Date de début*</label>
+                            <input type="text" id="input-plage-start" placeholder="Ex: 1914 ou septembre 1939">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-plage-start-format">Format début*</label>
+                            <select id="input-plage-start-format">
+                                <option value="Année">Année</option>
+                                <option value="Mois Année">Mois Année</option>
+                                <option value="Jour Mois Année">Jour Mois Année</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-plage-end">Date de fin*</label>
+                            <input type="text" id="input-plage-end" placeholder="Ex: 1918 ou mai 1945">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-plage-end-format">Format fin*</label>
+                            <select id="input-plage-end-format">
+                                <option value="Année">Année</option>
+                                <option value="Mois Année">Mois Année</option>
+                                <option value="Jour Mois Année">Jour Mois Année</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-plage-event">Événement de la plage*</label>
+                            <textarea id="input-plage-event" rows="2" placeholder="Description courte (ex: Seconde Guerre mondiale)..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- BLOC DYNAMIQUE : DEFINITION -->
+                    <div id="type-definition-block" class="hidden">
+                        <div class="form-group">
+                            <label for="input-term">Terme à définir*</label>
+                            <input type="text" id="input-term" placeholder="Ex: Totalitarisme">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-definition">Définition complète*</label>
+                            <textarea id="input-definition" rows="3" placeholder="Saisissez la définition exacte..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- BLOC DYNAMIQUE : FORMULE -->
+                    <div id="type-formula-block" class="hidden">
+                        <div class="form-group">
+                            <label for="input-formula-name">Nom de la formule*</label>
+                            <input type="text" id="input-formula-name" placeholder="Ex: Théorème de Pythagore">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-formula">Notation / Formule*</label>
+                            <input type="text" id="input-formula" placeholder="Ex: BC² = AB² + AC²">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="input-explanation">Explication détaillée (Optionnel)</label>
+                        <textarea id="input-explanation" rows="3" placeholder="Informations complémentaires..."></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <button type="button" class="btn hidden" id="btn-cancel-edit">Annuler</button>
+                        <button type="submit" class="btn primary" id="btn-save" style="flex: 1;">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- TABLEAU DES DATES ET FILTRES (PANNEAU DROIT) -->
+            <div>
+                <!-- Outils de sauvegarde -->
+                <div class="sync-row">
+                    <button class="btn" id="btn-load-server">
+                        Restaurer de revis-brevet.json
+                    </button>
+                    <button class="btn" id="btn-export-json" style="background-color: var(--accent-color); color: var(--accent-text); border: none;">
+                        Télécharger revis-brevet.json
+                    </button>
+                </div>
+
+                <!-- Outils de recherche enrichis (Texte + Recherche par Niveau) -->
+                <div class="search-container">
+                    <div class="search-wrapper-icon">
+                        <svg class="search-icon" viewBox="0 0 24 24">
+                            <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L22,21.27L20.73,22.54L13.14,15C11.96,15.79 10.55,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg>
+                        <input type="text" id="table-search" placeholder="Rechercher par mot-clé, date, formule...">
+                    </div>
+                    <input type="number" id="level-search" class="level-filter-input" placeholder="Niveau (ex: 0)" min="0" max="255">
+                </div>
+
+                <!-- Tableau -->
+                <div class="table-scroller">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Niveau</th>
+                                <th style="width: 100px;">Type</th>
+                                <th>Sujet / Intitulé</th>
+                                <th>Chapitre & Matière</th>
+                                <th style="width: 100px; text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="config-table-body">
+                            <!-- Rempli dynamiquement -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL 1 : SELECTION DU CHAPITRE -->
+    <div class="modal hidden" id="selector-modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <h3 style="margin: 0;">Sélectionner un chapitre</h3>
+                <button class="action-icon-btn" id="btn-close-selector" type="button" style="width: 32px; height: 32px;">
+                    <svg viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/></svg>
+                </button>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Sélectionnez le chapitre ciblé par cette fiche de révision.</p>
+            <div class="tree-container" id="selection-tree-container">
+                <!-- Généré en JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2 : GESTION DES CATEGORIES -->
+    <div class="modal hidden" id="settings-modal">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <h3 style="margin: 0;">Gestion des catégories</h3>
+                <button class="action-icon-btn" id="btn-close-settings" title="Fermer" type="button" style="width: 32px; height: 32px;">
+                    <svg viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/></svg>
+                </button>
+            </div>
+
+            <!-- Ajouter une Matière -->
+            <div style="background-color: var(--bg-color); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <h4 style="margin: 0 0 8px 0; font-size: 0.85rem;">Créer une nouvelle matière</h4>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="setting-new-subject" placeholder="Ex: Français, Mathématiques..." style="flex: 1; height: 36px; padding: 6px 12px;">
+                    <button type="button" class="btn primary" id="btn-add-subject" style="height: 36px;">Créer</button>
+                </div>
+            </div>
+
+            <!-- Tri par glisser-déposer interactif (Drag and Drop) -->
+            <h4 style="margin: 8px 0 0 0; font-size: 0.85rem;">Structure (Glisser-Déposer / Drag & Drop pour trier/associer)</h4>
+            <div class="tree-container" id="settings-tree-container" style="max-height: 280px;">
+                <!-- Arbre triable -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast-notif">
+        <svg id="toast-icon" viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--accent-color);"></svg>
+        <span id="toast-text">Message</span>
+    </div>
+
+    <script>
+        const CONFIG_JSON_URL = "http://127.0.0.1:5500/revis-brevet.json";
+        
+        let db = { settings: { subjects: [], themes: [], chapters: [] }, dates: [] };
+        let draggedElement = null; 
+
+        window.addEventListener('DOMContentLoaded', async () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+
+            document.getElementById('theme-toggle').addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                document.documentElement.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+            });
+
+            // Gérer le changement du type de fiche de révision
+            document.getElementById('input-type').addEventListener('change', (e) => {
+                onTypeChange(e.target.value);
+            });
+
+            setupSelectorModal();
+            setupSettingsModal();
+            await loadDataset();
+        });
+
+        // --- ENCHAÎNEMENT DYNAMIQUE DES FORMULAIRES ---
+        function onTypeChange(type) {
+            document.getElementById('type-date-block').classList.add('hidden');
+            document.getElementById('type-plage-block').classList.add('hidden');
+            document.getElementById('type-definition-block').classList.add('hidden');
+            document.getElementById('type-formula-block').classList.add('hidden');
+
+            setRequired('input-date', false);
+            setRequired('input-event', false);
+            setRequired('input-plage-start', false);
+            setRequired('input-plage-end', false);
+            setRequired('input-plage-event', false);
+            setRequired('input-term', false);
+            setRequired('input-definition', false);
+            setRequired('input-formula-name', false);
+            setRequired('input-formula', false);
+
+            if(type === 'date') {
+                document.getElementById('type-date-block').classList.remove('hidden');
+                setRequired('input-date', true);
+                setRequired('input-event', true);
+            } else if(type === 'plage') {
+                document.getElementById('type-plage-block').classList.remove('hidden');
+                setRequired('input-plage-start', true);
+                setRequired('input-plage-end', true);
+                setRequired('input-plage-event', true);
+            } else if(type === 'definition') {
+                document.getElementById('type-definition-block').classList.remove('hidden');
+                setRequired('input-term', true);
+                setRequired('input-definition', true);
+            } else if(type === 'formula') {
+                document.getElementById('type-formula-block').classList.remove('hidden');
+                setRequired('input-formula-name', true);
+                setRequired('input-formula', true);
+            }
+        }
+
+        function setRequired(id, isReq) {
+            const el = document.getElementById(id);
+            if (el) el.required = isReq;
+        }
+
+        // --- CHARGEMENT DU JSON ---
+        async function loadDataset() {
+            const stored = localStorage.getItem('brevet_dates_db');
+            if(stored) {
+                parseDatabase(JSON.parse(stored));
+                renderConfigTable();
+                return;
+            }
+
+            try {
+                const response = await fetch(CONFIG_JSON_URL);
+                if (response.ok) {
+                    db = await response.json();
+                    saveToLocalStorage();
+                    renderConfigTable();
+                    showToast("Dates et paramètres rechargés", "info");
+                }
+            } catch (error) {
+                db = { settings: { subjects: [], themes: [], chapters: [] }, dates: [] };
+                renderConfigTable();
+                showToast("Prêt à configurer vos premières fiches.", "info");
+            }
+        }
+
+        function parseDatabase(parsed) {
+            if (Array.isArray(parsed)) {
+                db.dates = parsed;
+                db.settings = { subjects: [], themes: [], chapters: [] };
+            } else {
+                db = parsed;
+            }
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('brevet_dates_db', JSON.stringify(db));
+        }
+
+        // --- RENDU ET PERSISTANCE DU TABLEAU DE DONNEES ---
+        function renderConfigTable() {
+            const query = document.getElementById('table-search').value.toLowerCase();
+            const levelVal = document.getElementById('level-search').value;
+
+            const tbody = document.getElementById('config-table-body');
+            tbody.innerHTML = '';
+
+            let filtered = db.dates || [];
+
+            if(levelVal !== '') {
+                filtered = filtered.filter(item => parseInt(item.level) === parseInt(levelVal));
+            }
+
+            if(query !== '') {
+                filtered = filtered.filter(item => {
+                    const txt = `${item.date || ''} ${item.event || ''} ${item.term || ''} ${item.definition || ''} ${item.formula || ''} ${item.explanation || ''}`.toLowerCase();
+                    return txt.includes(query);
+                });
+            }
+
+            if(filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 24px;">Aucune fiche trouvée.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach((item) => {
+                const globalIndex = db.dates.indexOf(item);
+                const tr = document.createElement('tr');
+
+                const chap = db.settings.chapters.find(c => c.id === item.chapterId);
+                const sub = chap ? db.settings.subjects.find(s => s.id === chap.subjectId) : null;
+                const locationTxt = chap ? `${chap.name} <br><small style="color:var(--text-muted)">(${sub ? sub.name : 'Inconnue'})</small>` : '-';
+
+                let labelHTML = '';
+                if(item.type === 'definition') {
+                    labelHTML = `<strong>${item.term}</strong><br><small style="color:var(--text-muted)">Définition : ${item.definition.substring(0, 50)}...</small>`;
+                } else if(item.type === 'formula') {
+                    labelHTML = `<strong>${item.formulaName}</strong><br><code>${item.formula}</code>`;
+                } else {
+                    labelHTML = `<strong>${item.date}</strong><br><small style="color:var(--text-muted)">${item.event}</small>`;
+                }
+
+                let typeBadge = '';
+                if(item.type === 'definition') typeBadge = '<span class="badge" style="background-color:#1c71d8; color:white;">Définition</span>';
+                else if(item.type === 'formula') typeBadge = '<span class="badge" style="background-color:#e66100; color:white;">Formule</span>';
+                else typeBadge = `<span class="badge" style="background-color:#2ec27e; color:white;">${item.type === 'plage' ? 'Plage' : 'Date'}</span>`;
+
+                tr.innerHTML = `
+                    <td><span class="badge ${parseInt(item.level) === 0 ? 'accent' : ''}">${item.level}</span></td>
+                    <td>${typeBadge}</td>
+                    <td>${labelHTML}</td>
+                    <td>${locationTxt}</td>
+                    <td>
+                        <div class="table-actions">
+                            <button class="action-icon-btn" onclick="triggerEdit(${globalIndex})" title="Modifier" style="width:30px; height:30px;">
+                                <svg viewBox="0 0 24 24" style="width:12px; height:12px;"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.07,6.19L3,17.25Z"/></svg>
+                            </button>
+                            <button class="action-icon-btn delete" onclick="triggerDelete(${globalIndex})" title="Supprimer" style="width:30px; height:30px;">
+                                <svg viewBox="0 0 24 24" style="width:12px; height:12px;"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/></svg>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        document.getElementById('table-search').addEventListener('input', renderConfigTable);
+        document.getElementById('level-search').addEventListener('input', renderConfigTable);
+
+        // --- ENREGISTREMENT SANS RESET DE SELECTION DE CHAPITRE ---
+        document.getElementById('editor-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const editId = parseInt(document.getElementById('edit-id').value);
+            const chapterId = document.getElementById('input-chapter-id').value;
+            const type = document.getElementById('input-type').value;
+
+            if(!chapterId) {
+                showToast("Associez un chapitre à cette fiche.", "warning");
+                return;
+            }
+
+            const cardObj = {
+                id: editId === -1 ? 'card_' + Date.now() : db.dates[editId].id,
+                type: type === 'plage' ? 'date' : type, // Maintient de la conformité du moteur de jeu
+                level: parseInt(document.getElementById('input-level').value),
+                chapterId: chapterId,
+                explanation: document.getElementById('input-explanation').value.trim() || undefined
+            };
+
+            if(type === 'date') {
+                cardObj.date = document.getElementById('input-date').value.trim();
+                cardObj.dateFormat = document.getElementById('input-format').value;
+                cardObj.event = document.getElementById('input-event').value.trim();
+            } else if(type === 'plage') {
+                // Concaténation de plage propre et lisible
+                const s = document.getElementById('input-plage-start').value.trim();
+                const e_val = document.getElementById('input-plage-end').value.trim();
+                cardObj.date = `${s} - ${e_val}`;
+                cardObj.dateFormat = document.getElementById('input-plage-start-format').value;
+                cardObj.event = document.getElementById('input-plage-event').value.trim();
+            } else if(type === 'definition') {
+                cardObj.term = document.getElementById('input-term').value.trim();
+                cardObj.definition = document.getElementById('input-definition').value.trim();
+            } else if(type === 'formula') {
+                cardObj.formulaName = document.getElementById('input-formula-name').value.trim();
+                cardObj.formula = document.getElementById('input-formula').value.trim();
+            }
+
+            if(editId === -1) {
+                db.dates.push(cardObj);
+                showToast("Fiche créée", "info");
+            } else {
+                db.dates[editId] = cardObj;
+                showToast("Fiche modifiée", "info");
+            }
+
+            saveToLocalStorage();
+
+            // On vide les champs de texte
+            document.getElementById('input-date').value = '';
+            document.getElementById('input-event').value = '';
+            document.getElementById('input-plage-start').value = '';
+            document.getElementById('input-plage-end').value = '';
+            document.getElementById('input-plage-event').value = '';
+            document.getElementById('input-term').value = '';
+            document.getElementById('input-definition').value = '';
+            document.getElementById('input-formula-name').value = '';
+            document.getElementById('input-formula').value = '';
+            document.getElementById('input-explanation').value = '';
+
+            resetEditorStateOnly();
+            renderConfigTable();
+        });
+
+        window.triggerEdit = function(index) {
+            const item = db.dates[index];
+            document.getElementById('edit-id').value = index;
+            
+            // Pour plages de dates d'ancien format, on le détecte
+            const isPlage = item.type === 'date' && item.date.includes(' - ');
+            const typeKey = isPlage ? 'plage' : item.type;
+
+            document.getElementById('input-type').value = typeKey;
+            onTypeChange(typeKey);
+
+            document.getElementById('input-level').value = item.level;
+            document.getElementById('input-chapter-id').value = item.chapterId;
+            document.getElementById('input-explanation').value = item.explanation || '';
+
+            if (typeKey === 'date') {
+                document.getElementById('input-date').value = item.date;
+                document.getElementById('input-format').value = item.dateFormat;
+                document.getElementById('input-event').value = item.event;
+            } else if (typeKey === 'plage') {
+                const split = item.date.split(' - ');
+                document.getElementById('input-plage-start').value = split[0] || '';
+                document.getElementById('input-plage-end').value = split[1] || '';
+                document.getElementById('input-plage-start-format').value = item.dateFormat;
+                document.getElementById('input-plage-event').value = item.event;
+            } else if (item.type === 'definition') {
+                document.getElementById('input-term').value = item.term;
+                document.getElementById('input-definition').value = item.definition;
+            } else if (item.type === 'formula') {
+                document.getElementById('input-formula-name').value = item.formulaName;
+                document.getElementById('input-formula').value = item.formula;
+            }
+
+            const chap = db.settings.chapters.find(c => c.id === item.chapterId);
+            const sub = chap ? db.settings.subjects.find(s => s.id === chap.subjectId) : null;
+            if(chap) {
+                document.getElementById('display-selected-text').textContent = `${chap.name} (${sub ? sub.name : 'Matière inconnue'})`;
+                document.getElementById('display-selected-text').style.color = 'var(--text-color)';
+            }
+
+            document.getElementById('editor-title').textContent = "Modifier la fiche";
+            document.getElementById('btn-cancel-edit').classList.remove('hidden');
+            document.getElementById('btn-save').textContent = "Modifier";
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.triggerDelete = function(index) {
+            if(confirm("Supprimer définitivement cette fiche de révision ?")) {
+                db.dates.splice(index, 1);
+                saveToLocalStorage();
+                renderConfigTable();
+                showToast("Fiche supprimée.", "warning");
+            }
+        };
+
+        document.getElementById('btn-cancel-edit').addEventListener('click', () => {
+            document.getElementById('editor-form').reset();
+            document.getElementById('input-chapter-id').value = '';
+            document.getElementById('display-selected-text').textContent = "Aucun chapitre sélectionné";
+            document.getElementById('display-selected-text').style.color = "var(--text-muted)";
+            resetEditorStateOnly();
+        });
+
+        function resetEditorStateOnly() {
+            document.getElementById('edit-id').value = "-1";
+            document.getElementById('editor-title').textContent = "Ajouter une fiche";
+            document.getElementById('btn-save').textContent = "Ajouter";
+            document.getElementById('btn-cancel-edit').classList.add('hidden');
+        }
+
+        // --- MODAL 1 : SELECTION RAPIDE DU CHAPITRE (ARBRE COHÉRENT) ---
+        function setupSelectorModal() {
+            const modal = document.getElementById('selector-modal');
+            document.getElementById('btn-open-selector').addEventListener('click', () => {
+                renderSelectionTree();
+                modal.classList.remove('hidden');
+            });
+            document.getElementById('btn-close-selector').addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+        }
+
+        function renderSelectionTree() {
+            const container = document.getElementById('selection-tree-container');
+            container.innerHTML = '';
+
+            const subjects = db.settings.subjects || [];
+            if(subjects.length === 0) {
+                container.innerHTML = '<div style="text-align:center; padding:12px; color:var(--text-muted)">Aucune matière. Créez-en une dans les Paramètres.</div>';
+                return;
+            }
+
+            subjects.forEach(subject => {
+                const subNode = document.createElement('div');
+                subNode.className = "tree-subject-node";
+                subNode.innerHTML = `<div class="tree-row subject-row"><span>${subject.name}</span></div>`;
+
+                const subThemes = (db.settings.themes || []).filter(t => t.subjectId === subject.id);
+                
+                const directChapters = (db.settings.chapters || []).filter(c => c.subjectId === subject.id && !c.themeId);
+                directChapters.forEach(chap => {
+                    const row = document.createElement('div');
+                    row.className = "tree-row chapter-row selectable";
+                    row.innerHTML = `<span>${chap.name}</span>`;
+                    row.onclick = () => selectChapter(chap, subject);
+                    subNode.appendChild(row);
+                });
+
+                subThemes.forEach(theme => {
+                    const themeNode = document.createElement('div');
+                    themeNode.className = "tree-theme-node";
+                    themeNode.innerHTML = `<div class="tree-row theme-row"><span>${theme.name}</span></div>`;
+
+                    const siblingChapters = (db.settings.chapters || []).filter(c => c.themeId === theme.id);
+                    siblingChapters.forEach(chap => {
+                        const row = document.createElement('div');
+                        row.className = "tree-row chapter-row selectable";
+                        row.innerHTML = `<span>${chap.name}</span>`;
+                        row.onclick = () => selectChapter(chap, subject);
+                        themeNode.appendChild(row);
+                    });
+                    subNode.appendChild(themeNode);
+                });
+
+                container.appendChild(subNode);
+            });
+        }
+
+        function selectChapter(chap, subject) {
+            document.getElementById('input-chapter-id').value = chap.id;
+            const display = document.getElementById('display-selected-text');
+            display.textContent = `${chap.name} (${subject.name})`;
+            display.style.color = "var(--text-color)";
+            document.getElementById('selector-modal').classList.add('hidden');
+            showToast("Chapitre associé !", "info");
+        }
+
+
+        // ================= MODAL 2 : ARBRE D'ADMINISTRATION DES CATEGORIES (SETTINGS) =================
+        function setupSettingsModal() {
+            const modal = document.getElementById('settings-modal');
+            document.getElementById('btn-open-settings').addEventListener('click', () => {
+                renderSettingsTree();
+                modal.classList.remove('hidden');
+            });
+            document.getElementById('btn-close-settings').addEventListener('click', () => {
+                modal.classList.add('hidden');
+            });
+
+            // Bouton de création de matière résolu (Bug fixé !)
+            document.getElementById('btn-add-subject').addEventListener('click', () => {
+                const input = document.getElementById('setting-new-subject');
+                const name = input.value.trim();
+                if(!name) return;
+
+                const id = 'sub_' + Date.now();
+                db.settings.subjects.push({ id, name });
+                input.value = '';
+                saveToLocalStorage();
+                renderSettingsTree();
+                showToast("Matière créée !", "info");
+            });
+        }
+
+        function renderSettingsTree() {
+            const container = document.getElementById('settings-tree-container');
+            container.innerHTML = '';
+
+            const subjects = db.settings.subjects || [];
+            if(subjects.length === 0) {
+                container.innerHTML = '<div style="text-align:center; padding:12px; color:var(--text-muted)">Aucune matière. Créez-en une ci-dessus.</div>';
+                return;
+            }
+
+            subjects.forEach((subject) => {
+                const subNode = document.createElement('div');
+                subNode.className = "tree-subject-node";
+                
+                const subRow = document.createElement('div');
+                subRow.className = "tree-row subject-row";
+                subRow.innerHTML = `
+                    <span>${subject.name}</span>
+                    <div class="tree-node-actions">
+                        <button class="tree-mini-btn" onclick="moveSubject('${subject.id}', 'up')" title="Monter">
+                            <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"/></svg>
+                        </button>
+                        <button class="tree-mini-btn" onclick="moveSubject('${subject.id}', 'down')" title="Descendre">
+                            <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                        </button>
+                        <button class="tree-mini-btn" onclick="addThemeInline('${subject.id}')" title="Ajouter un Thème" style="color:var(--accent-color);">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-1.41 1.41a4.99 4.99 0 0 0-1.41-1.41L12 11.58l.71-.71z"/></svg>
+                        </button>
+                        <button class="tree-mini-btn danger-hover" onclick="deleteSubject('${subject.id}')" title="Supprimer">
+                            <svg viewBox="0 0 24 24"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/></svg>
+                        </button>
+                    </div>
+                `;
+                subNode.appendChild(subRow);
+
+                // Chapitres directs de la matière
+                const directChapters = (db.settings.chapters || []).filter(c => c.subjectId === subject.id && !c.themeId);
+                directChapters.forEach(chap => {
+                    const row = createChapterNodeElement(chap);
+                    subNode.appendChild(row);
+                });
+
+                // Thèmes de la matière
+                const subThemes = (db.settings.themes || []).filter(t => t.subjectId === subject.id);
+                subThemes.forEach(theme => {
+                    const themeNode = document.createElement('div');
+                    themeNode.className = "tree-theme-node";
+                    themeNode.setAttribute('data-theme-id', theme.id);
+
+                    const themeRow = document.createElement('div');
+                    themeRow.className = "tree-row theme-row";
+                    themeRow.innerHTML = `
+                        <span>${theme.name}</span>
+                        <div class="tree-node-actions">
+                            <button class="tree-mini-btn" onclick="moveTheme('${theme.id}', 'up')" title="Monter">
+                                <svg viewBox="0 0 24 24"><path d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z"/></svg>
+                            </button>
+                            <button class="tree-mini-btn" onclick="moveTheme('${theme.id}', 'down')" title="Descendre">
+                                <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                            </button>
+                            <button class="tree-mini-btn" onclick="addChapterInline('${subject.id}', '${theme.id}')" title="Ajouter un chapitre" style="color:var(--success-color);">
+                                <svg viewBox="0 0 24 24"><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/></svg>
+                            </button>
+                            <button class="tree-mini-btn danger-hover" onclick="deleteTheme('${theme.id}')" title="Supprimer">
+                                <svg viewBox="0 0 24 24"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/></svg>
+                            </button>
+                        </div>
+                    `;
+                    themeNode.appendChild(themeRow);
+
+                    // Chapitres du thème
+                    const siblingChapters = (db.settings.chapters || []).filter(c => c.themeId === theme.id);
+                    siblingChapters.forEach(chap => {
+                        const row = createChapterNodeElement(chap);
+                        themeNode.appendChild(row);
+                    });
+
+                    subNode.appendChild(themeNode);
+                });
+
+                container.appendChild(subNode);
+            });
+        }
+
+        function createChapterNodeElement(chap) {
+            const row = document.createElement('div');
+            row.className = "tree-row chapter-row";
+            row.setAttribute('draggable', 'true');
+            row.setAttribute('data-chapter-id', chap.id);
+
+            row.innerHTML = `
+                <span>${chap.name}</span>
+                <div class="tree-node-actions">
+                    <button class="tree-mini-btn" onclick="renameChapter('${chap.id}')" title="Renommer">
+                        ✏️
+                    </button>
+                    <button class="tree-mini-btn danger-hover" onclick="deleteChapter('${chap.id}')" title="Supprimer">
+                        <svg viewBox="0 0 24 24" style="width:12px; height:12px;"><path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/></svg>
+                    </button>
+                </div>
+            `;
+
+            // Support de Drag & Drop pour ré-ordonner ou déplacer entre les catégories
+            row.addEventListener('dragstart', (e) => {
+                draggedElement = row;
+                row.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            row.addEventListener('dragend', () => {
+                row.classList.remove('dragging');
+                draggedElement = null;
+            });
+
+            row.addEventListener('dragover', (e) => { e.preventDefault(); });
+
+            row.addEventListener('drop', (e) => {
+                e.preventDefault();
+                if (draggedElement && draggedElement !== row) {
+                    const targetId = row.getAttribute('data-chapter-id');
+                    const sourceId = draggedElement.getAttribute('data-chapter-id');
+                    swapChaptersGlobally(sourceId, targetId);
+                }
+            });
+
+            return row;
+        }
+
+        // --- DEPLACEMENTS DE CATEGORIES ---
+
+        window.moveSubject = function(id, direction) {
+            const idx = db.settings.subjects.findIndex(s => s.id === id);
+            if(idx === -1) return;
+
+            if(direction === 'up' && idx > 0) {
+                const temp = db.settings.subjects[idx];
+                db.settings.subjects[idx] = db.settings.subjects[idx - 1];
+                db.settings.subjects[idx - 1] = temp;
+            } else if(direction === 'down' && idx < db.settings.subjects.length - 1) {
+                const temp = db.settings.subjects[idx];
+                db.settings.subjects[idx] = db.settings.subjects[idx + 1];
+                db.settings.subjects[idx + 1] = temp;
+            }
+            saveToLocalStorage();
+            renderSettingsTree();
+        };
+
+        window.moveTheme = function(id, direction) {
+            const idx = db.settings.themes.findIndex(t => t.id === id);
+            if(idx === -1) return;
+
+            if(direction === 'up' && idx > 0) {
+                const temp = db.settings.themes[idx];
+                db.settings.themes[idx] = db.settings.themes[idx - 1];
+                db.settings.themes[idx - 1] = temp;
+            } else if(direction === 'down' && idx < db.settings.themes.length - 1) {
+                const temp = db.settings.themes[idx];
+                db.settings.themes[idx] = db.settings.themes[idx + 1];
+                db.settings.themes[idx + 1] = temp;
+            }
+            saveToLocalStorage();
+            renderSettingsTree();
+        };
+
+        function swapChaptersGlobally(id1, id2) {
+            const idx1 = db.settings.chapters.findIndex(c => c.id === id1);
+            const idx2 = db.settings.chapters.findIndex(c => c.id === id2);
+            
+            const temp = db.settings.chapters[idx1];
+            db.settings.chapters[idx1] = db.settings.chapters[idx2];
+            db.settings.chapters[idx2] = temp;
+
+            saveToLocalStorage();
+            renderSettingsTree();
+            showToast("Ordre synchronisé !", "info");
+        }
+
+        window.addThemeInline = function(subjectId) {
+            const name = prompt("Nom du nouveau thème :");
+            if(!name || !name.trim()) return;
+
+            const id = 't_' + Date.now();
+            db.settings.themes.push({ id, subjectId, name: name.trim() });
+            saveToLocalStorage();
+            renderSettingsTree();
+        };
+
+        window.addChapterInline = function(subjectId, themeId) {
+            const name = prompt("Nom de la leçon ou du chapitre :");
+            if(!name || !name.trim()) return;
+
+            const id = 'c_' + Date.now();
+            db.settings.chapters.push({ id, subjectId, themeId: themeId || null, name: name.trim() });
+            saveToLocalStorage();
+            renderSettingsTree();
+        };
+
+        window.renameChapter = function(chapterId) {
+            const chap = db.settings.chapters.find(c => c.id === chapterId);
+            if(!chap) return;
+
+            const newName = prompt("Nouveau nom :", chap.name);
+            if(!newName || !newName.trim()) return;
+
+            chap.name = newName.trim();
+            saveToLocalStorage();
+            renderSettingsTree();
+            renderConfigTable(); 
+            showToast("Renommé !", "info");
+        };
+
+        window.deleteSubject = function(id) {
+            if(confirm("Supprimer cette matière écrasera thèmes et chapitres rattachés. Continuer ?")) {
+                db.settings.subjects = db.settings.subjects.filter(s => s.id !== id);
+                db.settings.themes = db.settings.themes.filter(t => t.subjectId !== id);
+                db.settings.chapters = db.settings.chapters.filter(c => c.subjectId !== id);
+                saveToLocalStorage();
+                renderSettingsTree();
+                showToast("Matière supprimée.", "warning");
+            }
+        };
+
+        window.deleteTheme = function(id) {
+            if(confirm("Supprimer ce thème ? Les chapitres ne seront pas supprimés mais seulement détachés.")) {
+                db.settings.themes = db.settings.themes.filter(t => t.id !== id);
+                db.settings.chapters.forEach(c => {
+                    if(c.themeId === id) c.themeId = null;
+                });
+                saveToLocalStorage();
+                renderSettingsTree();
+                showToast("Thème supprimé.", "warning");
+            }
+        };
+
+        window.deleteChapter = function(id) {
+            if(confirm("Supprimer ce chapitre ?")) {
+                db.settings.chapters = db.settings.chapters.filter(c => c.id !== id);
+                saveToLocalStorage();
+                renderSettingsTree();
+                showToast("Chapitre supprimé.", "warning");
+            }
+        };
+
+        function showToast(text, type = "info") {
+            const toast = document.getElementById('toast-notif');
+            const icon = document.getElementById('toast-icon');
+            const textEl = document.getElementById('toast-text');
+
+            textEl.textContent = text;
+            
+            if(type === 'warning') {
+                icon.style.fill = 'var(--delete-color)';
+                icon.innerHTML = `<path d="M13,13H11V7H13M13,17H11V15H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>`;
+            } else {
+                icon.style.fill = 'var(--accent-color)';
+                icon.innerHTML = `<path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>`;
+            }
+
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1026 @@
+{
+  "settings": {
+    "subjects": [
+      {
+        "id": "sub_histoire",
+        "name": "Histoire"
+      }
+    ],
+    "themes": [
+      {
+        "id": "t_1781705936829",
+        "name": "L'Europe, un théâtre majeur des guerres totales (1914-1945)",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "t_1781706057081",
+        "name": "Le monde depuis 1945",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "t_1781706103112",
+        "name": "Françaises et Français dans une république repensée",
+        "subjectId": "sub_histoire"
+      }
+    ],
+    "chapters": [
+      {
+        "id": "c_1781705965808",
+        "themeId": "t_1781705936829",
+        "name": "Les civils et les militaires dans la Première Guerre mondiale",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706009121",
+        "themeId": "t_1781705936829",
+        "name": "Les démocraties fragilisées et les expériences totalitaires dans l'Europe de l'entre-deux-guerres",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706032929",
+        "themeId": "t_1781705936829",
+        "name": "La Seconde Guerre mondiale : une guerre d'anéantissement",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706050600",
+        "themeId": "t_1781705936829",
+        "name": "La France défaite et occupée : collaboration et résistance",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706067786",
+        "themeId": "t_1781706057081",
+        "name": "Indépendances et construction de nouveaux États",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706075855",
+        "themeId": "t_1781706057081",
+        "name": "Un monde bipolaire au temps de la guerre froide",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706084849",
+        "themeId": "t_1781706057081",
+        "name": "L'affirmation et la mise en œuvre du projet européen",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706094567",
+        "themeId": "t_1781706057081",
+        "name": "Les enjeux et les conflits dans le monde après 1989",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706115334",
+        "themeId": "t_1781706103112",
+        "name": "1944-1947 : refonder la république, redéfinir la démocratie",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706123216",
+        "themeId": "t_1781706103112",
+        "name": "La Ve République : de la république gaullienne à l’alternance et à la cohabitation",
+        "subjectId": "sub_histoire"
+      },
+      {
+        "id": "c_1781706130433",
+        "themeId": "t_1781706103112",
+        "name": "La société française des années 1950 aux années 1980",
+        "subjectId": "sub_histoire"
+      }
+    ]
+  },
+  "dates": [
+    {
+      "id": "card_1_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781705965808",
+      "date": "28 Juin 1914",
+      "dateFormat": "Jour Mois Année",
+      "event": "Assassinat de Sarajevo",
+      "explanation": "L'archiduc François-Ferdinand est assassiné à Sarajevo le 28 juin 1914 par un étudiant Serbe."
+    },
+    {
+      "id": "card_2_1781891694",
+      "type": "date",
+      "level": 4,
+      "chapterId": "c_1781705965808",
+      "date": "28 Juillet 1914",
+      "dateFormat": "Jour Mois Année",
+      "event": "Déclaration de guerre contre la Serbie",
+      "explanation": "Le 28 juillet 1914, l'Autriche-Hongrie déclare officiellement la guerre à la Serbie."
+    },
+    {
+      "id": "card_3_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781705965808",
+      "date": "3 Août 1914",
+      "dateFormat": "Jour Mois Année",
+      "event": "Déclaration de guerre contre la France",
+      "explanation": "L'Empire Allemand (Triple-Alliance) déclare la guerre à la France."
+    },
+    {
+      "id": "card_4_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781705965808",
+      "date": "2 Avril 1917",
+      "dateFormat": "Jour Mois Année",
+      "event": "Entrée des États-Unis dans la Triple-Entente",
+      "explanation": "Les États-Unis rejoignent la Triple-Entente le 2 avril 1917 et entrent en guerre le 6 avril 1917."
+    },
+    {
+      "id": "card_5_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781705965808",
+      "date": "Octobre 1917",
+      "dateFormat": "Mois Année",
+      "event": "Révolutions Russes",
+      "explanation": "Elle sort de la guerre suite cette révolution."
+    },
+    {
+      "id": "card_6_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781705965808",
+      "date": "11 Novembre 1918",
+      "dateFormat": "Jour Mois Année",
+      "event": "Armistice"
+    },
+    {
+      "id": "card_7_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781705965808",
+      "date": "28 Juin 1919",
+      "dateFormat": "Jour Mois Année",
+      "event": "Traité de Versailles",
+      "explanation": "Il officialise la défaite de l'Allemagne. Les Allemands le nomme \"Diktat\"."
+    },
+    {
+      "id": "card_8_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781706009121",
+      "date": "1924",
+      "dateFormat": "Année",
+      "event": "Staline au pouvoir en URSS",
+      "explanation": "À la mort de Lénine, Staline alors secrétaire général du parti communiste prend le pouvoir en URSS."
+    },
+    {
+      "id": "card_9_1781891694",
+      "type": "date",
+      "level": 5,
+      "chapterId": "c_1781706009121",
+      "date": "24 Octobre 1929",
+      "dateFormat": "Jour Mois Année",
+      "event": "Début de la crise de 1929",
+      "explanation": "Le jeudi 24 octobre 1929, les cours des actions s'effondrent à la bourse de New York."
+    },
+    {
+      "id": "card_10_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706009121",
+      "date": "30 Janvier 1933",
+      "dateFormat": "Jour Mois Année",
+      "event": "Hitler au pouvoir en Allemagne",
+      "explanation": "Hitler devient chancelier."
+    },
+    {
+      "id": "card_11_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781706009121",
+      "date": "1934",
+      "dateFormat": "Année",
+      "event": "Hitler devient Fuhrer",
+      "explanation": "En 1934, Hitler devient le Fürer du IIIe Reich."
+    },
+    {
+      "id": "card_12_1781891694",
+      "type": "date",
+      "level": 4,
+      "chapterId": "c_1781706009121",
+      "date": "6 Février 1934",
+      "dateFormat": "Jour Mois Année",
+      "event": "Manifestation des ligues racistes en France",
+      "explanation": "Le 6 février 1934, les ligues racistes manifestent violemment devant l'Assemblée nationale française."
+    },
+    {
+      "id": "card_13_1781891694",
+      "type": "plage",
+      "level": 2,
+      "chapterId": "c_1781706009121",
+      "date": "1936 - 1938",
+      "dateFormat": "Année",
+      "event": "Grande Terreur",
+      "explanation": "Durant la Grande Terreur, plus de 1 000 personnes sont exécutées par jour en URSS."
+    },
+    {
+      "id": "card_14_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706009121",
+      "date": "Mai 1936",
+      "dateFormat": "Mois Année",
+      "event": "Victoire du Front populaire",
+      "explanation": "Le front populaire gagne les élections législatives en France."
+    },
+    {
+      "id": "card_15_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706009121",
+      "date": "7 Juin 1936",
+      "dateFormat": "Mois Année",
+      "event": "Accords de Matignon",
+      "explanation": "Les accords de Matignon améliorent les conditions de travail et de vie quotidienne des Français."
+    },
+    {
+      "id": "card_16_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706009121",
+      "date": "Mars 1938",
+      "dateFormat": "Mois Année",
+      "event": "Autriche envahie par l'Allemagne",
+      "explanation": "= Anschluss"
+    },
+    {
+      "id": "card_17_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706032929",
+      "date": "1 Septembre 1939",
+      "dateFormat": "Jour Mois Année",
+      "event": "Invasion de la Pologne",
+      "explanation": "L'Allemagne envahit l'Ouest de la Pologne le 1er septembre 1939."
+    },
+    {
+      "id": "card_18_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706032929",
+      "date": "Mai 1940",
+      "dateFormat": "Jour Mois Année",
+      "event": "Invasion de la France",
+      "explanation": "L'Allemagne attaque le France en Mai 1940 => Débâcle de l'Armée Française."
+    },
+    {
+      "id": "card_19_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706050600",
+      "date": "17 Juin 1940",
+      "dateFormat": "Jour Mois Année",
+      "event": "Pétain demande l'armistice"
+    },
+    {
+      "id": "card_20_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706050600",
+      "date": "18 Juin 1940",
+      "dateFormat": "Jour Mois Année",
+      "event": "Appel de De Gaulle",
+      "explanation": "En réponse à la demande d'armistice du Maréchal Pétain."
+    },
+    {
+      "id": "card_21_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706032929",
+      "date": "7 Décembre 1941",
+      "dateFormat": "Jour Mois Année",
+      "event": "Attaque de Pearl Harbor",
+      "explanation": "Les États-Unis entrent en guerre après l'attaque de leur base militaire Pearl Harbor par l'Aviation Japonaise le 7 décembre 1941."
+    },
+    {
+      "id": "card_22_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706032929",
+      "date": "Juillet 1942 - Février 1943",
+      "dateFormat": "Mois Année",
+      "event": "Bataille de Stalingrad",
+      "explanation": "Première défaite de l'Allemagne sur le front russe."
+    },
+    {
+      "id": "card_23_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706032929",
+      "date": "6 Juin 1944",
+      "dateFormat": "Jour Mois Année",
+      "event": "Débarquement de Normandie",
+      "explanation": "Les Anglais et les Américains débarquent en Normandie."
+    },
+    {
+      "id": "card_24_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706032929",
+      "date": "8 Mai 1945",
+      "dateFormat": "Jour Mois Année",
+      "event": "Capitulation de l'Allemagne"
+    },
+    {
+      "id": "card_25_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706032929",
+      "date": "6 et 9 Août 1945",
+      "dateFormat": "Jour Mois Année",
+      "event": "Bombardements nucléaires sur Hiroshima et Nagasaki"
+    },
+    {
+      "id": "card_26_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706032929",
+      "date": "2 Septembre 1945",
+      "dateFormat": "Jour Mois Année",
+      "event": "Capitulation du Japon"
+    },
+    {
+      "id": "card_27_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706050600",
+      "date": "3 Septembre 1939",
+      "dateFormat": "Jour Mois Année",
+      "event": "La France déclare la Guerre à l'Allemagne"
+    },
+    {
+      "id": "card_28_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781706050600",
+      "date": "20 Juin 1940",
+      "dateFormat": "Jour Mois Année",
+      "event": "Armistice entre la France et l'Allemagne"
+    },
+    {
+      "id": "card_29_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781706050600",
+      "date": "10 Juillet 1940",
+      "dateFormat": "Jour Mois Année",
+      "event": "Pleins pouvoirs à Pétain"
+    },
+    {
+      "id": "card_30_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781706050600",
+      "date": "Mai 1942",
+      "dateFormat": "Mois Année",
+      "event": "Port de l'étoile obligatoire pour les Juifs en France",
+      "explanation": "Le port de l'étoile jaune est obligatoire pour les Juifs en zone occupée à partir de mai 1942"
+    },
+    {
+      "id": "card_31_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706050600",
+      "date": "16 et 17 Juillet 1942",
+      "dateFormat": "Jour Mois Année",
+      "event": "Rafle du Vél' d'hiv"
+    },
+    {
+      "id": "card_32_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706050600",
+      "date": "1943",
+      "dateFormat": "Jour Mois Année",
+      "event": "STO",
+      "explanation": "Le Gouvernement de Vichy impose le STO."
+    },
+    {
+      "id": "card_33_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706032929",
+      "date": "15 Août 1944",
+      "dateFormat": "Jour Mois Année",
+      "event": "Débarquement de Provence"
+    },
+    {
+      "id": "card_34_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706050600",
+      "date": "Août 1944",
+      "dateFormat": "Mois Année",
+      "event": "Libération de Paris"
+    },
+    {
+      "id": "card_35_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706050600",
+      "date": "Février 1945",
+      "dateFormat": "Mois Année",
+      "event": "Libération de toute la France",
+      "explanation": "Le territoire Français est entièrement libéré en février 1945."
+    },
+    {
+      "id": "card_36_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706067786",
+      "date": "1945",
+      "dateFormat": "Année",
+      "event": "Charte de l'ONU",
+      "explanation": "Elle condamne la colonisation au nom du droit de chaque peuple à sa liberté."
+    },
+    {
+      "id": "card_37_1781891694",
+      "type": "plage",
+      "level": 3,
+      "chapterId": "c_1781706067786",
+      "date": "1947 - 1954",
+      "dateFormat": "Année",
+      "event": "Guerre d’Indochine",
+      "explanation": "L'Indochine est indépendante après une guerre contre la France."
+    },
+    {
+      "id": "card_38_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706067786",
+      "date": "15 Août 1947",
+      "dateFormat": "Jour Mois Année",
+      "event": "Indépendance de l'Inde",
+      "explanation": "L'Inde obtient son indépendance par la discussion et est coupée en deux pays : le Pakistan et l'Inde, pour les deux ethnies majoritaires."
+    },
+    {
+      "id": "card_39_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706067786",
+      "date": "1954 - 1962",
+      "dateFormat": "Année",
+      "event": "Guerre d'Algérie",
+      "explanation": "L'Algérie est indépendante après un guerre contre la France de 1954 à 1962."
+    },
+    {
+      "id": "card_40_1781891694",
+      "type": "date",
+      "level": 5,
+      "chapterId": "c_1781706067786",
+      "date": "1955",
+      "dateFormat": "Année",
+      "event": "Conférence de Bendung"
+    },
+    {
+      "id": "card_41_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706067786",
+      "date": "5 Juillet 1962",
+      "dateFormat": "Jour Mois Année",
+      "event": "Indépendance de l'Algérie",
+      "explanation": "L'Algérie est enfin indépendante après les accords d'Évian."
+    },
+    {
+      "id": "card_42_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706075855",
+      "date": "1945",
+      "dateFormat": "Année",
+      "event": "Division du territoire allemand",
+      "explanation": "Le territoire Allemand et Berlin sont divisés en 4 zones d'occupation."
+    },
+    {
+      "id": "card_43_1781891694",
+      "type": "date",
+      "level": 5,
+      "chapterId": "c_1781706075855",
+      "date": "1946",
+      "dateFormat": "Année",
+      "event": "Expression Rideau de Fer",
+      "explanation": "Winston Churchill qualifie la frontière qui sépare l'Europe de l'Est et de l'Ouest de \"Rideau de fer\"."
+    },
+    {
+      "id": "card_44_1781891694",
+      "type": "plage",
+      "level": 0,
+      "chapterId": "c_1781706075855",
+      "date": "1947 - 1991",
+      "dateFormat": "Année",
+      "event": "Guerre Froide"
+    },
+    {
+      "id": "card_45_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706075855",
+      "date": "1947",
+      "dateFormat": "Année",
+      "event": "Plan Marshall et Kominform",
+      "explanation": "En 1947, les États-Unis proposent le plan Marshall et l'URSS crée le Kominform en réponse."
+    },
+    {
+      "id": "card_46_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706075855",
+      "date": "1948 - 1949",
+      "dateFormat": "Année",
+      "event": "Blocus de Berlin"
+    },
+    {
+      "id": "card_47_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706075855",
+      "date": "1949",
+      "dateFormat": "Année",
+      "event": "Création de la RFA et RDA",
+      "explanation": "La République Fédérale Allemande (RFA) est crée en septembre 1949 et la République Démocratique Allemande (RDA) en octobre 1949."
+    },
+    {
+      "id": "card_48_1781891694",
+      "type": "plage",
+      "level": 2,
+      "chapterId": "c_1781706075855",
+      "date": "1950 - 1953",
+      "dateFormat": "Année",
+      "event": "Guerre de Corée"
+    },
+    {
+      "id": "card_49_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706075855",
+      "date": "1961",
+      "dateFormat": "Année",
+      "event": "Mur de Berlin",
+      "explanation": "Construit pour empêcher les Berlinois de l'Est d'aller à l'Ouest."
+    },
+    {
+      "id": "card_50_1781891694",
+      "type": "date",
+      "level": 3,
+      "chapterId": "c_1781706075855",
+      "date": "1961",
+      "dateFormat": "Année",
+      "event": "Conférence de Belgrade",
+      "explanation": "En 1961 a lieu la conférence de Belgrade : les nouveaux États indépendants choisissent le non-alignement."
+    },
+    {
+      "id": "card_51_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706075855",
+      "date": "1962",
+      "dateFormat": "Année",
+      "event": "Crise des missiles de Cuba"
+    },
+    {
+      "id": "card_52_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706075855",
+      "date": "9 Novembre 1989",
+      "dateFormat": "Jour Mois Année",
+      "event": "Chute du mur de Berlin",
+      "explanation": "Dans la nuit du 9 au 10 novembre 1989, le mur de Berlin est détruit."
+    },
+    {
+      "id": "card_53_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706075855",
+      "date": "Octobre 1990",
+      "dateFormat": "Mois Année",
+      "event": "Réunification de l'Allemagne"
+    },
+    {
+      "id": "card_54_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706075855",
+      "date": "1991",
+      "dateFormat": "Année",
+      "event": "Dislocation de l'URSS",
+      "explanation": "Fin de la Guerre froide et victoire du système Américain."
+    },
+    {
+      "id": "card_55_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706084849",
+      "date": "1951",
+      "dateFormat": "Année",
+      "event": "Création de la CECA",
+      "explanation": "Communauté Européenne du Charbon et de l'Acier"
+    },
+    {
+      "id": "card_56_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706084849",
+      "date": "1957",
+      "dateFormat": "Année",
+      "event": "Traité de Rome",
+      "explanation": "Création de la Communauté Économique Européenne"
+    },
+    {
+      "id": "card_57_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706084849",
+      "date": "1973, 1981, 1986",
+      "dateFormat": "Année",
+      "event": "Élargissements de la CEE",
+      "explanation": "En 1973 elle passe à 9 membres, 10 en 1981 et 12 pays membres en 1986."
+    },
+    {
+      "id": "card_58_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706084849",
+      "date": "1992",
+      "dateFormat": "Année",
+      "event": "Traité de Maastricht",
+      "explanation": "Création de l'Union Européenne, qui remplace la CEE."
+    },
+    {
+      "id": "card_59_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706084849",
+      "date": "1995",
+      "dateFormat": "Année",
+      "event": "Création de l'espace Schengen.",
+      "explanation": "Libre circulation des personnes."
+    },
+    {
+      "id": "card_60_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706084849",
+      "date": "2002",
+      "dateFormat": "Année",
+      "event": "Passage à l'euro",
+      "explanation": "Des pièces et des billets d'euros (€) sont mis en circulation."
+    },
+    {
+      "id": "card_61_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706084849",
+      "date": "2016",
+      "dateFormat": "Année",
+      "event": "Brexit",
+      "explanation": "Le Royaume-Uni vote pour le Brexit."
+    },
+    {
+      "id": "card_62_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706084849",
+      "date": "2020",
+      "dateFormat": "Année",
+      "event": "Sortie du Royaume-Uni de l'Union Européenne",
+      "explanation": "Le Brexit est appliqué en 2020, 4 ans après."
+    },
+    {
+      "id": "card_63_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706094567",
+      "date": "1948",
+      "dateFormat": "Année",
+      "event": "Début de la guerre israélo-palestinienne"
+    },
+    {
+      "id": "card_64_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706094567",
+      "date": "11 Septembre 2001",
+      "dateFormat": "Jour Mois Année",
+      "event": "Attentats aux États Unis",
+      "explanation": "Une série d'attentats aux États-Unis, dont deux avions détournés sur les tours jumelles, faisant plusieurs milliers de morts et un qui se crash sur le Pentagone."
+    },
+    {
+      "id": "card_65_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706094567",
+      "date": "2015",
+      "dateFormat": "Année",
+      "event": "Attentats en France",
+      "explanation": "En janvier 2015, une partie de la rédaction du journal <i>Charlie Hebdo</i>, des policiers, des passants et des juifs sont attaqués et tués. Le 13 novembre 2015, 130 personnes sont tuées lors d'attaques au Bataclan, au Stade de France et sur des terrasses parisiennes."
+    },
+    {
+      "id": "card_66_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706115334",
+      "date": "1944",
+      "dateFormat": "Année",
+      "event": "Droit de vote des femmes",
+      "explanation": "Le Gouvernement Provisoire de la République Française (GPRF) accorde le droit de vote aux femmes."
+    },
+    {
+      "id": "card_67_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706115334",
+      "date": "15 Mars 1944",
+      "dateFormat": "Jour Mois Année",
+      "event": "Publication du programme du CNR",
+      "explanation": "Le CNR publie son programme pour la restauration de la république."
+    },
+    {
+      "id": "card_68_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706115334",
+      "date": "31 Août 1944",
+      "dateFormat": "Jour Mois Année",
+      "event": "GPRF à Paris",
+      "explanation": "Le Gouvernement de la République Provisoire Française s'installe à Paris."
+    },
+    {
+      "id": "card_69_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706115334",
+      "date": "15 Août 1945",
+      "dateFormat": "Jour Mois Année",
+      "event": "Jugement de Pétain",
+      "explanation": "Pétain est condamné à la peine de mort, ensuite transformée en prison à perpétuité."
+    },
+    {
+      "id": "card_70_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706115334",
+      "date": "Octobre 1945",
+      "dateFormat": "Mois Année",
+      "event": "Création de la Sécurité sociale"
+    },
+    {
+      "id": "card_71_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706115334",
+      "date": "Octobre 1945",
+      "dateFormat": "Mois Année",
+      "event": "Élection d'une assemblée constituante"
+    },
+    {
+      "id": "card_72_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706115334",
+      "date": "Octobre 1946",
+      "dateFormat": "Mois Année",
+      "event": "Proclamation de la IVe République"
+    },
+    {
+      "id": "card_73_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "1958 - 1969",
+      "dateFormat": "Année",
+      "event": "Présidence de Charles de Gaulle"
+    },
+    {
+      "id": "card_74_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706123216",
+      "date": "4 Octobre 1958",
+      "dateFormat": "Jour Mois Année",
+      "event": "Proclamation de la Ve République",
+      "explanation": "Elle remplace alors la IVe République créée 12 ans plus tôt."
+    },
+    {
+      "id": "card_75_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "1962",
+      "dateFormat": "Année",
+      "event": "Élection au suffrage universel direct du président de la République",
+      "explanation": "Charles de Gaulle obtient par référendum le principe de l'élection du président au suffrage universel direct."
+    },
+    {
+      "id": "card_76_1781891694",
+      "type": "date",
+      "level": 4,
+      "chapterId": "c_1781706123216",
+      "date": "Mai 1968",
+      "dateFormat": "Mois Année",
+      "event": "Crise sociale",
+      "explanation": "Le moi de mai est marqué par une forte agitation sociale."
+    },
+    {
+      "id": "card_77_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "1969 - 1974",
+      "dateFormat": "Année",
+      "event": "Présidence de Georges Pompidou",
+      "explanation": "Il était Premier Ministre de Charles de Gaulle avant lui."
+    },
+    {
+      "id": "card_78_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "1974 - 1981",
+      "dateFormat": "Année",
+      "event": "Présidence de Valéry Giscard",
+      "explanation": "De son plein nom Valéry Giscard d'Estaing."
+    },
+    {
+      "id": "card_79_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "1981 - 1995",
+      "dateFormat": "Année",
+      "event": "Présidence de François Mitterrand",
+      "explanation": "Il est réélu en 1998"
+    },
+    {
+      "id": "card_80_1781891694",
+      "type": "plage",
+      "level": 3,
+      "chapterId": "c_1781706123216",
+      "date": "1986 - 1988 ET 1993-1995",
+      "dateFormat": "Année",
+      "event": "Périodes de confrontation sous François Mitterrand"
+    },
+    {
+      "id": "card_81_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "1995 - 2007",
+      "dateFormat": "Année",
+      "event": "Présidence de Jacques Chirac",
+      "explanation": "Il est réélu en 2002"
+    },
+    {
+      "id": "card_82_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706123216",
+      "date": "2002",
+      "dateFormat": "Année",
+      "event": "Mandat présidentiel à 5 ans",
+      "explanation": "Le mandat présidentiel passe de 7 à 5 ans."
+    },
+    {
+      "id": "card_83_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "2007 - 2012",
+      "dateFormat": "Année",
+      "event": "Présidence de Nicolas Sarkozy"
+    },
+    {
+      "id": "card_84_1781891694",
+      "type": "plage",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "2012 - 2017",
+      "dateFormat": "Année",
+      "event": "Présidence de François Hollande"
+    },
+    {
+      "id": "card_85_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "date": "2017",
+      "dateFormat": "Année",
+      "event": "Élection d'Emmanuel Macron"
+    },
+    {
+      "id": "card_86_1781891694",
+      "type": "plage",
+      "level": 0,
+      "chapterId": "c_1781706130433",
+      "date": "1945 - 1973",
+      "dateFormat": "Année",
+      "event": "Trente Glorieuses"
+    },
+    {
+      "id": "card_87_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706130433",
+      "date": "1973 ET 1979",
+      "dateFormat": "Année",
+      "event": "Chocs pétroliers",
+      "explanation": "La croissance économique est stoppée par les chocs pétroliers de 1973 et 1979."
+    },
+    {
+      "id": "card_88_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706130433",
+      "date": "1956",
+      "dateFormat": "Année",
+      "event": "Congés payés de trois semaines"
+    },
+    {
+      "id": "card_89_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706130433",
+      "date": "1967",
+      "dateFormat": "Année",
+      "event": "Loi Neuwirth",
+      "explanation": "Elle accorde l'accès au contraceptifs, dont la pilule."
+    },
+    {
+      "id": "card_90_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706130433",
+      "date": "1968",
+      "dateFormat": "Année",
+      "event": "Congés payés de quatre semaines"
+    },
+    {
+      "id": "card_91_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706130433",
+      "date": "1975",
+      "dateFormat": "Année",
+      "event": "Loi Veil",
+      "explanation": "Elle légalise l'avortement (IVG)"
+    },
+    {
+      "id": "card_92_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706130433",
+      "date": "1974",
+      "dateFormat": "Année",
+      "event": "Majorité à 18 ans",
+      "explanation": "Valéry Giscard d'Estaing modifie l'âge de la majorité qui passe de 21 à 18 ans."
+    },
+    {
+      "id": "card_93_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706130433",
+      "date": "1982",
+      "dateFormat": "Année",
+      "event": "Congés payés de cinq semaines"
+    },
+    {
+      "id": "card_94_1781891694",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781706130433",
+      "date": "1999",
+      "dateFormat": "Année",
+      "event": "PACS",
+      "explanation": "PACS = PActe Civil de Solidarité"
+    },
+    {
+      "id": "card_95_1781891694",
+      "type": "date",
+      "level": 2,
+      "chapterId": "c_1781706130433",
+      "date": "1982",
+      "dateFormat": "Année",
+      "event": "Fin du monopole d'État sur les médias audiovisuels"
+    },
+    {
+      "id": "card_96_1781891694",
+      "type": "date",
+      "level": 0,
+      "chapterId": "c_1781706130433",
+      "date": "2013",
+      "dateFormat": "Année",
+      "event": "Mariage pour tous",
+      "explanation": "Le mariage pour les couples de même sexe est (enfin!) légalisé."
+    }
+  ]
+}
