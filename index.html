@@ -917,45 +917,52 @@
         });
 
         async function loadDataset() {
-            const stored = localStorage.getItem('brevet_dates_db');
-            if(stored) {
-                db = JSON.parse(stored);
+    const storedStr = localStorage.getItem('brevet_dates_db');
+
+    // Si on a déjà des données en local et pas besoin d'aller chercher, on pourra quand même préférer la version server si différente.
+    try {
+        const response = await fetch(CONFIG_JSON_URL);
+        if (response.ok) {
+            const fetchedText = await response.text();
+            // Comparaison textuelle simple (robuste et rapide) : si le JSON serveur diffère de ce qui est stocké, on privilégie le serveur.
+            if (storedStr) {
+                if (fetchedText.trim() !== storedStr.trim()) {
+                    // nouvelle version depuis le serveur -> on l'utilise et on met à jour le localStorage
+                    db = JSON.parse(fetchedText);
+                    localStorage.setItem('brevet_dates_db', JSON.stringify(db));
+                    buildSubjectOptions();
+                    showToast("Base mise à jour depuis le serveur", "success");
+                    return;
+                } else {
+                    // identique -> on utilise la version locale
+                    db = JSON.parse(storedStr);
+                    buildSubjectOptions();
+                    return;
+                }
+            } else {
+                // pas de version locale, on prend la version serveur
+                db = JSON.parse(fetchedText);
+                localStorage.setItem('brevet_dates_db', JSON.stringify(db));
                 buildSubjectOptions();
                 return;
             }
-
-            try {
-                const response = await fetch(CONFIG_JSON_URL);
-                if (response.ok) {
-                    db = await response.json();
-                    localStorage.setItem('brevet_dates_db', JSON.stringify(db));
-                    buildSubjectOptions();
-                }
-            } catch (error) {
-                // Mockup complet de secours
-                db = {
-                    settings: {
-                        subjects: [
-                            { id: "sub_1", name: "Histoire" },
-                            { id: "sub_2", name: "Mathématiques" }
-                        ],
-                        themes: [
-                            { id: "t_1", subjectId: "sub_1", name: "Le monde depuis 1914" }
-                        ],
-                        chapters: [
-                            { id: "c_1", themeId: "t_1", subjectId: "sub_1", name: "La Première Guerre mondiale" },
-                            { id: "c_2", themeId: null, subjectId: "sub_2", name: "Théorème de Pythagore" }
-                        ]
-                    },
-                    dates: [
-                        { id: "1", type: "date", level: 0, chapterId: "c_1", date: "1914-1918", dateFormat: "Année", event: "La Première Guerre mondiale", explanation: "Conflit global." },
-                        { id: "2", type: "definition", level: 0, chapterId: "c_1", term: "Guerre totale", definition: "Mobilisation de toutes les ressources d'un État pour la guerre.", explanation: "Concept clé." },
-                        { id: "3", type: "formula", level: 0, chapterId: "c_2", formula: "BC² = AB² + AC²", formulaName: "Théorème de Pythagore", explanation: "Pour les triangles rectangles." }
-                    ]
-                };
+        } else {
+            // fetch a répondu mais pas OK -> fallback sur local si présent
+            if (storedStr) {
+                db = JSON.parse(storedStr);
                 buildSubjectOptions();
-                showToast("Mode de secours activé", "warning");
+                return;
             }
+        }
+    } catch (error) {
+        // erreur réseau ou parsing -> fallback sur local si présent
+        if (storedStr) {
+            db = JSON.parse(storedStr);
+            buildSubjectOptions();
+            return;
+        }
+    }
+    showToast("Aucune donnée ne peuvent-être récupérées... Vérifez votre connexion internet et réessayez.", "warning");
         }
 
         function buildSubjectOptions() {
