@@ -197,7 +197,7 @@
         .search-container {
             display: flex;
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             width: 100%;
         }
 
@@ -228,6 +228,19 @@
         .level-filter-input {
             width: 140px;
             flex-shrink: 0;
+        }
+
+        .filter-dropdowns-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .filter-dropdowns-row select {
+            flex: 1;
+            min-width: 120px;
         }
 
         .table-scroller {
@@ -666,6 +679,19 @@
                     <input type="number" id="level-search" class="level-filter-input" placeholder="Niveau (ex: 0)" min="0" max="255">
                 </div>
 
+                <!-- SELECTEURS DE FILTRES DYNAMIQUES PAR CATEGORIE -->
+                <div class="search-container" style="flex-wrap: wrap; margin-top: -8px;">
+                    <select id="filter-subject" style="flex: 1; min-width: 120px;">
+                        <option value="">Toutes les matières</option>
+                    </select>
+                    <select id="filter-theme" style="flex: 1; min-width: 120px;">
+                        <option value="">Tous les thèmes</option>
+                    </select>
+                    <select id="filter-chapter" style="flex: 1; min-width: 120px;">
+                        <option value="">Tous les chapitres</option>
+                    </select>
+                </div>
+
                 <!-- Tableau -->
                 <div class="table-scroller">
                     <table>
@@ -833,6 +859,7 @@
                         // Cas initial où rien n'était en cache
                         db = fetchedDb;
                         saveToLocalStorage();
+                        initFilterDropdowns();
                         renderConfigTable();
                         showToast("Dates et paramètres rechargés", "info");
                     } else {
@@ -844,10 +871,12 @@
                             // Mise à jour automatique des données
                             db = fetchedDb;
                             saveToLocalStorage();
+                            initFilterDropdowns();
                             renderConfigTable();
                             showToast("Mise à jour détectée et synchronisée depuis revis-brevet.json !", "info");
                         } else {
                             console.log("Les données locales sont déjà synchronisées avec le serveur.");
+                            initFilterDropdowns();
                         }
                     }
                 }
@@ -855,8 +884,11 @@
                 console.warn("Impossible de contacter le serveur de synchronisation :", error);
                 if (!hasLocalData) {
                     db = { settings: { subjects: [], themes: [], chapters: [] }, dates: [] };
+                    initFilterDropdowns();
                     renderConfigTable();
                     showToast("Prêt à configurer vos premières fiches (hors ligne).", "info");
+                } else {
+                    initFilterDropdowns();
                 }
             }
         }
@@ -883,10 +915,105 @@
             localStorage.setItem('brevet_dates_db', JSON.stringify(db));
         }
 
+        // --- FILTRES DE RECHERCHE PAR CATEGORIE ---
+        function initFilterDropdowns() {
+            const subFilter = document.getElementById('filter-subject');
+            const thFilter = document.getElementById('filter-theme');
+            const chapFilter = document.getElementById('filter-chapter');
+
+            // Sauvegarder les sélections actuelles si elles existent toujours
+            const currentSub = subFilter.value;
+            const currentTh = thFilter.value;
+            const currentChap = chapFilter.value;
+
+            // Remplir les Matières
+            subFilter.innerHTML = '<option value="">Toutes les matières</option>';
+            (db.settings.subjects || []).forEach(sub => {
+                const opt = document.createElement('option');
+                opt.value = sub.id;
+                opt.textContent = sub.name;
+                subFilter.appendChild(opt);
+            });
+            if (currentSub && [...subFilter.options].some(o => o.value === currentSub)) {
+                subFilter.value = currentSub;
+            }
+
+            // Mettre à jour les thèmes dépendants de la matière
+            updateThemeDropdown();
+            if (currentTh && [...thFilter.options].some(o => o.value === currentTh)) {
+                thFilter.value = currentTh;
+            }
+
+            // Mettre à jour les chapitres dépendants du thème
+            updateChapterDropdown();
+            if (currentChap && [...chapFilter.options].some(o => o.value === currentChap)) {
+                chapFilter.value = currentChap;
+            }
+
+            // Ajouter les écouteurs de changement
+            subFilter.onchange = () => {
+                updateThemeDropdown();
+                updateChapterDropdown();
+                renderConfigTable();
+            };
+
+            thFilter.onchange = () => {
+                updateChapterDropdown();
+                renderConfigTable();
+            };
+
+            chapFilter.onchange = () => {
+                renderConfigTable();
+            };
+        }
+
+        function updateThemeDropdown() {
+            const subId = document.getElementById('filter-subject').value;
+            const thFilter = document.getElementById('filter-theme');
+            thFilter.innerHTML = '<option value="">Tous les thèmes</option>';
+
+            const themes = db.settings.themes || [];
+            const filteredThemes = subId ? themes.filter(t => t.subjectId === subId) : themes;
+
+            filteredThemes.forEach(t => {
+                const opt = document.createElement('option');
+                opt.value = t.id;
+                opt.textContent = t.name;
+                thFilter.appendChild(opt);
+            });
+        }
+
+        function updateChapterDropdown() {
+            const subId = document.getElementById('filter-subject').value;
+            const thId = document.getElementById('filter-theme').value;
+            const chapFilter = document.getElementById('filter-chapter');
+            chapFilter.innerHTML = '<option value="">Tous les chapitres</option>';
+
+            let chapters = db.settings.chapters || [];
+
+            if (thId) {
+                chapters = chapters.filter(c => c.themeId === thId);
+            } else if (subId) {
+                chapters = chapters.filter(c => c.subjectId === subId);
+            }
+
+            chapters.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c.id;
+                opt.textContent = c.name;
+                chapFilter.appendChild(opt);
+            });
+        }
+
         // --- RENDU ET PERSISTANCE DU TABLEAU DE DONNEES ---
         function renderConfigTable() {
             const query = document.getElementById('table-search').value.toLowerCase();
             const levelVal = document.getElementById('level-search').value;
+            
+            // Récupérer les valeurs sélectionnées des filtres
+            const subFilter = document.getElementById('filter-subject') ? document.getElementById('filter-subject').value : '';
+            const thFilter = document.getElementById('filter-theme') ? document.getElementById('filter-theme').value : '';
+            const chapFilter = document.getElementById('filter-chapter') ? document.getElementById('filter-chapter').value : '';
 
             const tbody = document.getElementById('config-table-body');
             tbody.innerHTML = '';
@@ -895,6 +1022,21 @@
 
             if(levelVal !== '') {
                 filtered = filtered.filter(item => parseInt(item.level) === parseInt(levelVal));
+            }
+
+            // Filtrage par Chapitre
+            if (chapFilter !== '') {
+                filtered = filtered.filter(item => item.chapterId === chapFilter);
+            } 
+            // Sinon filtrage par Thème
+            else if (thFilter !== '') {
+                const chapIds = (db.settings.chapters || []).filter(c => c.themeId === thFilter).map(c => c.id);
+                filtered = filtered.filter(item => chapIds.includes(item.chapterId));
+            } 
+            // Sinon filtrage par Matière
+            else if (subFilter !== '') {
+                const chapIds = (db.settings.chapters || []).filter(c => c.subjectId === subFilter).map(c => c.id);
+                filtered = filtered.filter(item => chapIds.includes(item.chapterId));
             }
 
             if(query !== '') {
@@ -950,9 +1092,6 @@
                 tbody.appendChild(tr);
             });
         }
-
-        document.getElementById('table-search').addEventListener('input', renderConfigTable);
-        document.getElementById('level-search').addEventListener('input', renderConfigTable);
 
         // --- ENREGISTREMENT SANS RESET DE SELECTION DE CHAPITRE ---
         document.getElementById('editor-form').addEventListener('submit', (e) => {
@@ -1091,49 +1230,128 @@
             document.getElementById('btn-cancel-edit').classList.add('hidden');
         }
 
-        // --- EXPORT SÉCURISÉ BLOB (RÉSOUT LE PROBLÈME DE TÉLÉCHARGEMENT) ---
-        document.getElementById('btn-export-json').addEventListener('click', () => {
-            try {
-                console.log("Début de l'export : ")
-                const out = { settings: db.settings, dates: db.dates };
-                console.log("out : ")
-                console.log(out)
-                const jsonString = JSON.stringify(out, null, 2);
-                console.log("jsonString : ")
-                console.log(jsonString)
-                
-                // Utilisation de Blob et createObjectURL pour forcer le téléchargement sécurisé
-                const blob = new Blob([jsonString], { type: "application/json;charset=utf-8" });
-                console.log("blob : ")
-                console.log(blob)
-                const url = URL.createObjectURL(blob);
-                console.log("url : ")
-                console.log(url)
-                
-                const dl = document.createElement('a');
-                dl.href = url;
-                dl.download = "revis-brevet.json";
-                document.body.appendChild(dl);
-                dl.click();
-                
-                document.body.removeChild(dl);
-                URL.revokeObjectURL(url);
-                showToast("Exportation réussie !", "info");
-            } catch (err) {
-                showToast("Erreur lors de l'exportation du fichier", "warning");
+        // --- DEPLACEMENTS DE CATEGORIES ---
+
+        window.moveSubject = function(id, direction) {
+            const idx = db.settings.subjects.findIndex(s => s.id === id);
+            if(idx === -1) return;
+
+            if(direction === 'up' && idx > 0) {
+                const temp = db.settings.subjects[idx];
+                db.settings.subjects[idx] = db.settings.subjects[idx - 1];
+                db.settings.subjects[idx - 1] = temp;
+            } else if(direction === 'down' && idx < db.settings.subjects.length - 1) {
+                const temp = db.settings.subjects[idx];
+                db.settings.subjects[idx] = db.settings.subjects[idx + 1];
+                db.settings.subjects[idx + 1] = temp;
             }
-        });
+            saveToLocalStorage();
+            renderSettingsTree();
+        };
 
-        document.getElementById('btn-load-server').addEventListener('click', async () => {
-            if(confirm("Écraser les modifications locales ?")) {
-                localStorage.removeItem('brevet_dates_db');
-                await loadDataset();
-                renderConfigTable();
+        window.moveTheme = function(id, direction) {
+            const idx = db.settings.themes.findIndex(t => t.id === id);
+            if(idx === -1) return;
+
+            if(direction === 'up' && idx > 0) {
+                const temp = db.settings.themes[idx];
+                db.settings.themes[idx] = db.settings.themes[idx - 1];
+                db.settings.themes[idx - 1] = temp;
+            } else if(direction === 'down' && idx < db.settings.themes.length - 1) {
+                const temp = db.settings.themes[idx];
+                db.settings.themes[idx] = db.settings.themes[idx + 1];
+                db.settings.themes[idx + 1] = temp;
             }
-        });
+            saveToLocalStorage();
+            renderSettingsTree();
+        };
 
+        function swapChaptersGlobally(id1, id2) {
+            const idx1 = db.settings.chapters.findIndex(c => c.id === id1);
+            const idx2 = db.settings.chapters.findIndex(c => c.id === id2);
+            
+            const temp = db.settings.chapters[idx1];
+            db.settings.chapters[idx1] = db.settings.chapters[idx2];
+            db.settings.chapters[idx2] = temp;
 
-        // --- MODAL 1 : SELECTION RAPIDE DU CHAPITRE (ARBRE COHÉRENT) ---
+            saveToLocalStorage();
+            renderSettingsTree();
+            showToast("Ordre synchronisé !", "info");
+        }
+
+        window.addThemeInline = function(subjectId) {
+            const name = prompt("Nom du nouveau thème :");
+            if(!name || !name.trim()) return;
+
+            const id = 't_' + Date.now();
+            db.settings.themes.push({ id, subjectId, name: name.trim() });
+            saveToLocalStorage();
+            renderSettingsTree();
+            initFilterDropdowns();
+        };
+
+        window.addChapterInline = function(subjectId, themeId) {
+            const name = prompt("Nom de la leçon ou du chapitre :");
+            if(!name || !name.trim()) return;
+
+            const id = 'c_' + Date.now();
+            db.settings.chapters.push({ id, subjectId, themeId: themeId || null, name: name.trim() });
+            saveToLocalStorage();
+            renderSettingsTree();
+            initFilterDropdowns();
+        };
+
+        window.renameChapter = function(chapterId) {
+            const chap = db.settings.chapters.find(c => c.id === chapterId);
+            if(!chap) return;
+
+            const newName = prompt("Nouveau nom :", chap.name);
+            if(!newName || !newName.trim()) return;
+
+            chap.name = newName.trim();
+            saveToLocalStorage();
+            renderSettingsTree();
+            renderConfigTable(); 
+            initFilterDropdowns();
+            showToast("Renommé !", "info");
+        };
+
+        window.deleteSubject = function(id) {
+            if(confirm("Supprimer cette matière écrasera thèmes et chapitres rattachés. Continuer ?")) {
+                db.settings.subjects = db.settings.subjects.filter(s => s.id !== id);
+                db.settings.themes = db.settings.themes.filter(t => t.subjectId !== id);
+                db.settings.chapters = db.settings.chapters.filter(c => c.subjectId !== id);
+                saveToLocalStorage();
+                renderSettingsTree();
+                initFilterDropdowns();
+                showToast("Matière supprimée.", "warning");
+            }
+        };
+
+        window.deleteTheme = function(id) {
+            if(confirm("Supprimer ce thème ? Les chapitres ne seront pas supprimés mais seulement détachés.")) {
+                db.settings.themes = db.settings.themes.filter(t => t.id !== id);
+                db.settings.chapters.forEach(c => {
+                    if(c.themeId === id) c.themeId = null;
+                });
+                saveToLocalStorage();
+                renderSettingsTree();
+                initFilterDropdowns();
+                showToast("Thème supprimé.", "warning");
+            }
+        };
+
+        window.deleteChapter = function(id) {
+            if(confirm("Supprimer ce chapitre ?")) {
+                db.settings.chapters = db.settings.chapters.filter(c => c.id !== id);
+                saveToLocalStorage();
+                renderSettingsTree();
+                initFilterDropdowns();
+                showToast("Chapitre supprimé.", "warning");
+            }
+        };
+
+        // ================= MODAL 1 : SELECTION RAPIDE DU CHAPITRE (ARBRE COHÉRENT) =================
         function setupSelectorModal() {
             const modal = document.getElementById('selector-modal');
             document.getElementById('btn-open-selector').addEventListener('click', () => {
@@ -1212,7 +1430,7 @@
                 modal.classList.add('hidden');
             });
 
-            // Bouton de création de matière résolu (Bug fixé !)
+            // Bouton de création de matière
             document.getElementById('btn-add-subject').addEventListener('click', () => {
                 const input = document.getElementById('setting-new-subject');
                 const name = input.value.trim();
@@ -1223,6 +1441,7 @@
                 input.value = '';
                 saveToLocalStorage();
                 renderSettingsTree();
+                initFilterDropdowns();
                 showToast("Matière créée !", "info");
             });
         }
@@ -1355,120 +1574,65 @@
             return row;
         }
 
-        // --- DEPLACEMENTS DE CATEGORIES ---
-
-        window.moveSubject = function(id, direction) {
-            const idx = db.settings.subjects.findIndex(s => s.id === id);
-            if(idx === -1) return;
-
-            if(direction === 'up' && idx > 0) {
-                const temp = db.settings.subjects[idx];
-                db.settings.subjects[idx] = db.settings.subjects[idx - 1];
-                db.settings.subjects[idx - 1] = temp;
-            } else if(direction === 'down' && idx < db.settings.subjects.length - 1) {
-                const temp = db.settings.subjects[idx];
-                db.settings.subjects[idx] = db.settings.subjects[idx + 1];
-                db.settings.subjects[idx + 1] = temp;
+        // --- EXPORT SÉCURISÉ BLOB ET JOURNALISATION COMPLÈTE ---
+        document.getElementById('btn-export-json').addEventListener('click', () => {
+            console.log("[Export] Clic sur le bouton de téléchargement.");
+            try {
+                console.log("[Export] Préparation des données settings et fiches...");
+                const out = { settings: db.settings, dates: db.dates };
+                
+                console.log("[Export] Conversion de la base de données en chaîne JSON...");
+                const jsonString = JSON.stringify(out, null, 2);
+                const sizeInBytes = new Blob([jsonString]).size;
+                console.log(`[Export] Chaîne JSON générée avec succès. Taille du fichier : ${(sizeInBytes / 1024).toFixed(2)} KB.`);
+                
+                console.log("[Export] Création du Blob binaire de type application/json...");
+                const blob = new Blob([jsonString], { type: "application/json;charset=utf-8" });
+                
+                console.log("[Export] Génération de l'URL d'objet révocable...");
+                const url = URL.createObjectURL(blob);
+                console.log(`[Export] URL d'objet créée : ${url}`);
+                
+                console.log("[Export] Création d'un élément ancrage temporaire <a>...");
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = "revis-brevet.json";
+                a.style.display = 'none';
+                
+                console.log("[Export] Insertion de l'ancrage dans le document DOM...");
+                document.body.appendChild(a);
+                
+                console.log("[Export] Déclenchement artificiel de l'action de clic...");
+                a.click();
+                
+                console.log("[Export] Nettoyage et suppression de l'ancrage temporaire...");
+                document.body.removeChild(a);
+                
+                console.log("[Export] Révocation de l'URL d'objet pour libérer la mémoire...");
+                URL.revokeObjectURL(url);
+                
+                console.log("[Export] Téléchargement exécuté.");
+                showToast("Téléchargement lancé !", "info");
+            } catch (err) {
+                console.error("[Export] !!! ÉCHEC DU TÉLÉCHARGEMENT !!!", err);
+                console.error("[Export] Message d'erreur :", err.message);
+                console.error("[Export] Stacktrace complet :", err.stack);
+                
+                // Impression brute des données de secours dans la console pour permettre la sauvegarde manuelle
+                console.warn("[Export] [Secours] Copiez manuellement l'objet JSON ci-dessous :");
+                console.log(JSON.stringify({ settings: db.settings, dates: db.dates }, null, 2));
+                
+                showToast("Échec du téléchargement. Ouvrez la console F12 pour copier le JSON de secours !", "warning");
             }
-            saveToLocalStorage();
-            renderSettingsTree();
-        };
+        });
 
-        window.moveTheme = function(id, direction) {
-            const idx = db.settings.themes.findIndex(t => t.id === id);
-            if(idx === -1) return;
-
-            if(direction === 'up' && idx > 0) {
-                const temp = db.settings.themes[idx];
-                db.settings.themes[idx] = db.settings.themes[idx - 1];
-                db.settings.themes[idx - 1] = temp;
-            } else if(direction === 'down' && idx < db.settings.themes.length - 1) {
-                const temp = db.settings.themes[idx];
-                db.settings.themes[idx] = db.settings.themes[idx + 1];
-                db.settings.themes[idx + 1] = temp;
+        document.getElementById('btn-load-server').addEventListener('click', async () => {
+            if(confirm("Écraser les modifications locales ?")) {
+                localStorage.removeItem('brevet_dates_db');
+                await loadDataset();
+                renderConfigTable();
             }
-            saveToLocalStorage();
-            renderSettingsTree();
-        };
-
-        function swapChaptersGlobally(id1, id2) {
-            const idx1 = db.settings.chapters.findIndex(c => c.id === id1);
-            const idx2 = db.settings.chapters.findIndex(c => c.id === id2);
-            
-            const temp = db.settings.chapters[idx1];
-            db.settings.chapters[idx1] = db.settings.chapters[idx2];
-            db.settings.chapters[idx2] = temp;
-
-            saveToLocalStorage();
-            renderSettingsTree();
-            showToast("Ordre synchronisé !", "info");
-        }
-
-        window.addThemeInline = function(subjectId) {
-            const name = prompt("Nom du nouveau thème :");
-            if(!name || !name.trim()) return;
-
-            const id = 't_' + Date.now();
-            db.settings.themes.push({ id, subjectId, name: name.trim() });
-            saveToLocalStorage();
-            renderSettingsTree();
-        };
-
-        window.addChapterInline = function(subjectId, themeId) {
-            const name = prompt("Nom de la leçon ou du chapitre :");
-            if(!name || !name.trim()) return;
-
-            const id = 'c_' + Date.now();
-            db.settings.chapters.push({ id, subjectId, themeId: themeId || null, name: name.trim() });
-            saveToLocalStorage();
-            renderSettingsTree();
-        };
-
-        window.renameChapter = function(chapterId) {
-            const chap = db.settings.chapters.find(c => c.id === chapterId);
-            if(!chap) return;
-
-            const newName = prompt("Nouveau nom :", chap.name);
-            if(!newName || !newName.trim()) return;
-
-            chap.name = newName.trim();
-            saveToLocalStorage();
-            renderSettingsTree();
-            renderConfigTable(); 
-            showToast("Renommé !", "info");
-        };
-
-        window.deleteSubject = function(id) {
-            if(confirm("Supprimer cette matière écrasera thèmes et chapitres rattachés. Continuer ?")) {
-                db.settings.subjects = db.settings.subjects.filter(s => s.id !== id);
-                db.settings.themes = db.settings.themes.filter(t => t.subjectId !== id);
-                db.settings.chapters = db.settings.chapters.filter(c => c.subjectId !== id);
-                saveToLocalStorage();
-                renderSettingsTree();
-                showToast("Matière supprimée.", "warning");
-            }
-        };
-
-        window.deleteTheme = function(id) {
-            if(confirm("Supprimer ce thème ? Les chapitres ne seront pas supprimés mais seulement détachés.")) {
-                db.settings.themes = db.settings.themes.filter(t => t.id !== id);
-                db.settings.chapters.forEach(c => {
-                    if(c.themeId === id) c.themeId = null;
-                });
-                saveToLocalStorage();
-                renderSettingsTree();
-                showToast("Thème supprimé.", "warning");
-            }
-        };
-
-        window.deleteChapter = function(id) {
-            if(confirm("Supprimer ce chapitre ?")) {
-                db.settings.chapters = db.settings.chapters.filter(c => c.id !== id);
-                saveToLocalStorage();
-                renderSettingsTree();
-                showToast("Chapitre supprimé.", "warning");
-            }
-        };
+        });
 
         function showToast(text, type = "info") {
             const toast = document.getElementById('toast-notif');
