@@ -8,6 +8,10 @@
       {
         "id": "sub_1782047711582",
         "name": "Français"
+      },
+      {
+        "id": "sub_1782231144626",
+        "name": "Physique-Chimie"
       }
     ],
     "themes": [
@@ -30,6 +34,26 @@
         "id": "t_1782047820553",
         "subjectId": "sub_1782047711582",
         "name": "Étude de la langue"
+      },
+      {
+        "id": "t_1782231154069",
+        "subjectId": "sub_1782231144626",
+        "name": "Organisation et transformations de la matière"
+      },
+      {
+        "id": "t_1782232531189",
+        "subjectId": "sub_1782231144626",
+        "name": "Mouvements et interactions"
+      },
+      {
+        "id": "t_1782232693550",
+        "subjectId": "sub_1782231144626",
+        "name": "L'énergie et ses conversions"
+      },
+      {
+        "id": "t_1782232960134",
+        "subjectId": "sub_1782231144626",
+        "name": "Des signaux pour observer et communiquer"
       }
     ],
     "chapters": [
@@ -128,6 +152,36 @@
         "subjectId": "sub_1782047711582",
         "themeId": "t_1782047820553",
         "name": "Les figures de style"
+      },
+      {
+        "id": "c_1782230525085",
+        "subjectId": "sub_1782047711582",
+        "themeId": "t_1782047820553",
+        "name": "Valeurs des temps"
+      },
+      {
+        "id": "c_1782231161344",
+        "subjectId": "sub_1782231144626",
+        "themeId": "t_1782231154069",
+        "name": "Masse volumique et Constitution de l'atome"
+      },
+      {
+        "id": "c_1782232539118",
+        "subjectId": "sub_1782231144626",
+        "themeId": "t_1782232531189",
+        "name": "Mécanique, Vitesse et Gravitation"
+      },
+      {
+        "id": "c_1782232702799",
+        "subjectId": "sub_1782231144626",
+        "themeId": "t_1782232693550",
+        "name": "Électricité et Énergies mécaniques"
+      },
+      {
+        "id": "c_1782232980632",
+        "subjectId": "sub_1782231144626",
+        "themeId": "t_1782232960134",
+        "name": "Ondes sonores et lumineuses"
       }
     ]
   },
@@ -1138,7 +1192,7 @@
       "type": "definition",
       "level": 0,
       "chapterId": "c_1782048670864",
-      "explanation": "Les variables : noms, déterminants, adjectifs, pronoms, verbes. Les invariables : adverbes, prépositions, conjonctions, interjections.",
+      "explanation": "<strong>Les variables</strong> : noms, déterminants, adjectifs, pronoms, verbes.\n<br><strong>Les invariables</strong> : adverbes, prépositions, conjonctions, interjections.",
       "term": "Variable / Invariable",
       "definition": "Une classe de mots est variable si le mot change de forme (genre, nombre, personne). Elle est invariable si le mot s'écrit toujours de la même façon."
     },
@@ -1420,6 +1474,202 @@
       "date": "6 Avril 1917",
       "dateFormat": "Jour Mois Année",
       "event": "Entrée en guerre des États-Unis"
+    },
+    {
+      "id": "card_1782230629974",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782230525085",
+      "explanation": "Et aussi : habitude/répétition, futur/passé proche, présent d’énonciation.",
+      "term": "Vérité générale, narration",
+      "definition": "Présent"
+    },
+    {
+      "id": "card_1782230710308",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782230525085",
+      "explanation": "<strong>Et aussi : doute, condition</strong>",
+      "term": "Futur dans le passé",
+      "definition": "Conditionnel"
+    },
+    {
+      "id": "card_1782230758291",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782230525085",
+      "term": "Action de second plan, description, habitude",
+      "definition": "Imparfait"
+    },
+    {
+      "id": "card_1782230800624",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782230525085",
+      "explanation": "Et aussi, des actions successives lorsque plusieurs verbes au passé simple se suivent.",
+      "term": "Action de premier plan, achevée",
+      "definition": "Passé simple"
+    },
+    {
+      "id": "card_1782230824491",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782230525085",
+      "term": "Donner un ordre",
+      "definition": "Impératif présent"
+    },
+    {
+      "id": "card_1782231196758",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782231161344",
+      "explanation": "$\\rho$ (rho) en g/cm³ ou kg/m³, $m$ est la masse (g ou kg), $V$ est le volume (cm³ ou m³). Elle caractérise la masse d'un matériau par unité de volume.",
+      "formulaName": "Masse volumique",
+      "formula": "$\\rho = \\frac{m}{V}$"
+    },
+    {
+      "id": "card_1782232282183",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782231161344",
+      "explanation": "Le noyau est chargé positivement, les électrons négativement. Le vide y est prédominant. On peut retrouver sa composition avec Z (le numéro atomique) qui correspond au nombre de protons et A (nombre de masse) qui correspond au nombre de nucléons (Protons+neutrons).",
+      "term": "Atome",
+      "definition": "Entité chimiquement neutre composée d'un noyau central (protons et neutrons) autour duquel tournent des électrons."
+    },
+    {
+      "id": "card_1782232326432",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782231161344",
+      "explanation": "S'il gagne des électrons (négatifs), il devient un <strong>anion</strong> (-). S'il en perd, il devient un <strong>cation</strong> (+).",
+      "term": "Ion",
+      "definition": "Atome (ou groupe d'atomes) qui a gagné ou perdu un ou plusieurs électrons."
+    },
+    {
+      "id": "card_1782232446582",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782231161344",
+      "explanation": "Inférieur à 7 : <strong>acide</strong> (majorité d'ions $H^+$). Égal à 7 : <strong>neutre</strong> (ni acide ni basique). Supérieur à 7 : <strong>basique</strong> (majorité d'ions $HO^-$).",
+      "term": "pH (Potentiel Hydrogène)",
+      "definition": "Grandeur sans unité, comprise entre 0 et 14, qui mesure l'acidité ou la basicité d'une solution aqueuse. 7 Est lorsque la solution est neutre."
+    },
+    {
+      "id": "card_1782232597632",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782232539118",
+      "explanation": "Cette formule donne la vitesse moyenne. $v$ est la vitesse (m/s ou km/h), $d$ est la distance parcourue (m ou km), $t$ est la durée du parcours (s ou h).",
+      "formulaName": "Vitesse",
+      "formula": "$v = \\frac{d}{t}$"
+    },
+    {
+      "id": "card_1782232626896",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782232539118",
+      "explanation": "$P$ est le poids en Newtons (N), $m$ est la masse en kilogrammes (kg), $g$ est l'intensité de la pesanteur en N/kg (sur Terre, $g \\approx 9,81$ N/kg).",
+      "formulaName": "Relation Poids / Masse",
+      "formula": "$P = m \\times g$"
+    },
+    {
+      "id": "card_1782232651763",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782232539118",
+      "explanation": "Se mesure avec un dynamomètre. Sa direction est toujours verticale, vers le centre de l'astre.",
+      "term": "Poids",
+      "definition": "Force d'attraction gravitationnelle exercée par un astre (comme la Terre) sur un objet. Elle s'exprime en Newtons (N) et dépend du lieu."
+    },
+    {
+      "id": "card_1782232669948",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782232539118",
+      "explanation": "Se mesure avec une balance.",
+      "term": "Masse",
+      "definition": "Quantité de matière qui constitue un objet. Elle est invariable (ne change pas, peu importe l'endroit dans l'univers) et s'exprime en kilogrammes (kg)."
+    },
+    {
+      "id": "card_1782232764946",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782232702799",
+      "explanation": "<strong>Ne fonctionne que pour les résistances</strong> $U$ est la tension aux bornes de la résistance en Volts (V), $R$ est la valeur de la résistance en Ohms ($\\Omega$), $I$ est l'intensité du courant en Ampères (A).",
+      "formulaName": "Loi d'Ohm",
+      "formula": "$U = R \\times I$"
+    },
+    {
+      "id": "card_1782232794729",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782232702799",
+      "explanation": "$P$ est la puissance reçue par l'appareil en Watts (W), $U$ est la tension en Volts (V), $I$ est l'intensité en Ampères (A).",
+      "formulaName": "Puissance électrique",
+      "formula": "$P = U \\times I$"
+    },
+    {
+      "id": "card_1782232851729",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782232702799",
+      "explanation": "$E$ est l'énergie consommée en Joules (J) ou en Joules-heures / KiloWatts-heures (Wh / kWh), $P$ est la puissance en Watts (W), $t$ est la durée en secondes (s) ou en heures (h).",
+      "formulaName": "Énergie électrique",
+      "formula": "$E = P \\times t$"
+    },
+    {
+      "id": "card_1782232874328",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782232702799",
+      "explanation": "$E_c$ est l'énergie liée au mouvement en Joules (J), $m$ est la masse en kg, $v$ est la vitesse en m/s. (Attention, la vitesse est au carré !).",
+      "formulaName": "Énergie cinétique",
+      "formula": "$E_c = \\frac{1}{2} \\times m \\times v^2$"
+    },
+    {
+      "id": "card_1782232894178",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782232702799",
+      "explanation": "$E_p = m \\times g \\times h$$E_p$ est l'énergie liée à l'altitude en Joules (J), $m$ la masse (kg), $g$ la pesanteur (N/kg), $h$ la hauteur par rapport au sol (m).",
+      "formulaName": "Énergie potentielle de position",
+      "formula": "$E_p = m \\times g \\times h$"
+    },
+    {
+      "id": "card_1782232921611",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782232702799",
+      "explanation": "$E_m$ est la somme de l'énergie cinétique et de l'énergie potentielle. En l'absence de frottements, l'énergie mécanique se conserve (reste constante).",
+      "formulaName": "Énergie mécanique",
+      "formula": "$E_m = E_c + E_p$"
+    },
+    {
+      "id": "card_1782233025728",
+      "type": "formula",
+      "level": 2,
+      "chapterId": "c_1782232980632",
+      "explanation": "$f = \\frac{1}{T}$$f$ est la fréquence en Hertz (Hz), $T$ est la période du signal en secondes (s). Représente le nombre de motifs répétitifs par seconde.",
+      "formulaName": "Fréquence d'un signal",
+      "formula": "$f = \\frac{1}{T}$"
+    },
+    {
+      "id": "card_1782233051160",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782232980632",
+      "explanation": "Vitesse de propagation de la lumière dans le vide ou dans l'air (environ 300 000 km/s). C'est la limite absolue de vitesse dans l'univers.",
+      "formulaName": "Vitesse de la lumière",
+      "formula": "$c \\approx 3 \\times 10^8 \\text{ m/s}$"
+    },
+    {
+      "id": "card_1782233074494",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782232980632",
+      "explanation": "Vitesse de propagation d'une onde sonore dans l'air à température ambiante. Le son a besoin d'un milieu matériel pour se propager (il ne se propage pas dans le vide).",
+      "formulaName": "Vitesse du son dans l'air",
+      "formula": "$v_{\\text{son}} \\approx 340 \\text{ m/s}$"
     }
   ]
 }

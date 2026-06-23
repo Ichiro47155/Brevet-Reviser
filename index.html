@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brevet Chrono — Révisions</title>
+    <!-- Chargement sécurisé et asynchrone de KaTeX pour le rendu des formules LaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="window.katexLoaded = true;"></script>
     <style>
         /* Thèmes & Variables GNOME Adwaita (Accent Purple) */
         :root[data-theme="light"] {
@@ -800,7 +804,6 @@
 
                 <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: center;">
                     <button class="btn" id="recap-home-btn">Accueil</button>
-                    <button class="btn primary" id="recap-retry-btn">Recommencer</button>
                 </div>
             </div>
 
@@ -862,6 +865,19 @@
         let dragStartX = 0;
         let isDragging = false;
         let failedCards = [];
+
+        // Fonction helper pour déclencher le rendu de KaTeX sur toute la page
+        function renderMath() {
+            if (window.renderMathInElement) {
+                renderMathInElement(document.body, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+        }
 
         window.addEventListener('DOMContentLoaded', async () => {
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -1311,13 +1327,13 @@
                 document.getElementById('fc-question-text').textContent = item.definition;
 
                 document.getElementById('fc-meta-back').textContent = "Terme correspondant";
-                document.getElementById('fc-answer-text').innerHTML = `<span style="color:var(--accent-color)">${item.term}</span>`;
+                document.getElementById('fc-answer-text').innerHTML = `<span class="mathjax-render">${item.term}</span>`;
             } else if (item.type === 'formula') {
                 document.getElementById('fc-meta-front').textContent = `Formule — ${chapName}`;
-                document.getElementById('fc-question-text').innerHTML = `<div class="formula-container">${item.formula}</div>`;
+                document.getElementById('fc-question-text').innerHTML = `<div class="formula-container mathjax-render">${item.formula}</div>`;
 
                 document.getElementById('fc-meta-back').textContent = "Nom de la formule";
-                document.getElementById('fc-answer-text').innerHTML = `<span style="color:var(--accent-color)">${item.formulaName}</span>`;
+                document.getElementById('fc-answer-text').innerHTML = `<span class="mathjax-render" style="color:var(--accent-color)">${item.formulaName}</span>`;
             } else {
                 let isEvtToDate = chosenDirection === 'evt-to-date';
                 if(chosenDirection === 'random') isEvtToDate = Math.random() > 0.5;
@@ -1342,6 +1358,9 @@
             } else {
                 expEl.classList.add('hidden');
             }
+            
+            // Lancer le rendu LaTeX à chaque affichage de fiche
+            renderMath();
             saveCurrentSessionState();
         }
 
@@ -1349,6 +1368,9 @@
             if (e.target.closest('.round-action-btn') || isDragging) return;
             isFlipped = !isFlipped;
             document.getElementById('flashcard-element').classList.toggle('flipped', isFlipped);
+            
+            // Relancer le rendu LaTeX au cas où le verso contient des formules
+            renderMath();
         });
 
         document.getElementById('fc-like').addEventListener('click', () => triggerSwipe('right'));
@@ -1455,6 +1477,7 @@
                 document.getElementById('quiz-question-text').textContent = `Quel terme correspond à cette définition : "${item.definition}" ?`;
                 answerInput.placeholder = "Saisissez le terme...";
             } else if(item.type === 'formula') {
+                // LaTeX : Le nom de la formule peut avoir du LaTeX, ou la formule elle-même.
                 document.getElementById('quiz-question-text').innerHTML = `Quelle formule correspond au nom suivant : <strong>"${item.formulaName}"</strong> ?`;
                 answerInput.placeholder = "Saisissez la notation...";
             } else {
@@ -1472,6 +1495,9 @@
                 }
             }
             answerInput.focus();
+            
+            // Rendre le LaTeX sur la question du quiz
+            renderMath();
             saveCurrentSessionState();
         }
 
@@ -1481,7 +1507,8 @@
         });
 
         function cleanAnswer(str) {
-            return str.toLowerCase().replace(/[^a-z0-9]/g, '');
+            // Nettoyage souple en retirant les espaces et caractères spéciaux non pertinents, mais en préservant le LaTeX
+            return str.toLowerCase().replace(/[^a-z0-9\\+\-\*\/=\(\)\{\}_\^]/g, '');
         }
 
         function checkQuizAnswer() {
@@ -1506,7 +1533,7 @@
                 feedbackBox.className = "quiz-feedback-box correct";
                 document.body.style.backgroundColor = "var(--success-bg)";
             } else {
-                feedbackBox.innerHTML = `Incorrect. Réponse attendue : <strong>${rawCorrectAnswer}</strong>`;
+                feedbackBox.innerHTML = `Incorrect. Réponse attendue : <strong class="mathjax-render">${rawCorrectAnswer}</strong>`;
                 feedbackBox.className = "quiz-feedback-box wrong";
                 document.body.style.backgroundColor = "var(--error-bg)";
                 
@@ -1526,6 +1553,9 @@
 
             document.getElementById('quiz-control-group').classList.add('hidden');
             document.getElementById('quiz-controls').classList.remove('hidden');
+            
+            // Déclencher le rendu LaTeX sur la correction et l'explication
+            renderMath();
         }
 
         document.getElementById('quiz-next-btn').addEventListener('click', () => {
@@ -1574,8 +1604,8 @@
                     failedCards.forEach(item => {
                         const div = document.createElement('div');
                         div.className = "error-item";
-                        if (item.type === 'definition') div.innerHTML = `<strong>${item.term}</strong> : ${item.definition}`;
-                        else if (item.type === 'formula') div.innerHTML = `<strong>${item.formulaName}</strong> : <code>${item.formula}</code>`;
+                        if (item.type === 'definition') div.innerHTML = `<strong class="mathjax-render">${item.term}</strong> : <span class="mathjax-render">${item.definition}</span>`;
+                        else if (item.type === 'formula') div.innerHTML = `<strong class="mathjax-render">${item.formulaName}</strong> : <code class="mathjax-render">${item.formula}</code>`;
                         else div.innerHTML = `<strong>${item.date}</strong> : ${item.event}`;
                         errorList.appendChild(div);
                     });
@@ -1587,6 +1617,9 @@
             saveStats(pct);
             localStorage.removeItem('brevet_saved_session_active');
             document.getElementById('revise-recap').classList.remove('hidden');
+            
+            // Rendre le LaTeX sur la liste récapitulative finale
+            renderMath();
         }
 
         function saveStats(pct) {
@@ -1645,11 +1678,6 @@
         document.getElementById('recap-home-btn').addEventListener('click', () => {
             document.getElementById('revise-recap').classList.add('hidden');
             document.getElementById('revise-setup').classList.remove('hidden');
-        });
-
-        document.getElementById('recap-retry-btn').addEventListener('click', () => {
-            document.getElementById('revise-recap').classList.add('hidden');
-            startSession();
         });
 
         function showToast(text, type = "info") {
