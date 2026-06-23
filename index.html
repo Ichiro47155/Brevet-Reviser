@@ -917,52 +917,52 @@
         });
 
         async function loadDataset() {
-    const storedStr = localStorage.getItem('brevet_dates_db');
+            const storedStr = localStorage.getItem('brevet_dates_db');
 
-    // Si on a déjà des données en local et pas besoin d'aller chercher, on pourra quand même préférer la version server si différente.
-    try {
-        const response = await fetch(CONFIG_JSON_URL);
-        if (response.ok) {
-            const fetchedText = await response.text();
-            // Comparaison textuelle simple (robuste et rapide) : si le JSON serveur diffère de ce qui est stocké, on privilégie le serveur.
-            if (storedStr) {
-                if (fetchedText.trim() !== storedStr.trim()) {
-                    // nouvelle version depuis le serveur -> on l'utilise et on met à jour le localStorage
-                    db = JSON.parse(fetchedText);
-                    localStorage.setItem('brevet_dates_db', JSON.stringify(db));
-                    buildSubjectOptions();
-                    showToast("Base mise à jour depuis le serveur", "success");
-                    return;
+            // Si on a déjà des données en local et pas besoin d'aller chercher, on pourra quand même préférer la version server si différente.
+            try {
+                const response = await fetch(CONFIG_JSON_URL);
+                if (response.ok) {
+                    const fetchedText = await response.text();
+                    // Comparaison textuelle simple (robuste et rapide) : si le JSON serveur diffère de ce qui est stocké, on privilégie le serveur.
+                    if (storedStr) {
+                        if (fetchedText.trim() !== storedStr.trim()) {
+                            // nouvelle version depuis le serveur -> on l'utilise et on met à jour le localStorage
+                            db = JSON.parse(fetchedText);
+                            localStorage.setItem('brevet_dates_db', JSON.stringify(db));
+                            buildSubjectOptions();
+                            showToast("Base mise à jour depuis le serveur", "success");
+                            return;
+                        } else {
+                            // identique -> on utilise la version locale
+                            db = JSON.parse(storedStr);
+                            buildSubjectOptions();
+                            return;
+                        }
+                    } else {
+                        // pas de version locale, on prend la version serveur
+                        db = JSON.parse(fetchedText);
+                        localStorage.setItem('brevet_dates_db', JSON.stringify(db));
+                        buildSubjectOptions();
+                        return;
+                    }
                 } else {
-                    // identique -> on utilise la version locale
+                    // fetch a répondu mais pas OK -> fallback sur local si présent
+                    if (storedStr) {
+                        db = JSON.parse(storedStr);
+                        buildSubjectOptions();
+                        return;
+                    }
+                }
+            } catch (error) {
+                // erreur réseau ou parsing -> fallback sur local si présent
+                if (storedStr) {
                     db = JSON.parse(storedStr);
                     buildSubjectOptions();
                     return;
                 }
-            } else {
-                // pas de version locale, on prend la version serveur
-                db = JSON.parse(fetchedText);
-                localStorage.setItem('brevet_dates_db', JSON.stringify(db));
-                buildSubjectOptions();
-                return;
             }
-        } else {
-            // fetch a répondu mais pas OK -> fallback sur local si présent
-            if (storedStr) {
-                db = JSON.parse(storedStr);
-                buildSubjectOptions();
-                return;
-            }
-        }
-    } catch (error) {
-        // erreur réseau ou parsing -> fallback sur local si présent
-        if (storedStr) {
-            db = JSON.parse(storedStr);
-            buildSubjectOptions();
-            return;
-        }
-    }
-    showToast("Aucune donnée ne peuvent-être récupérées... Vérifez votre connexion internet et réessayez.", "warning");
+            showToast("Aucune donnée ne peuvent-être récupérées... Vérifez votre connexion internet et réessayez.", "warning");
         }
 
         function buildSubjectOptions() {
