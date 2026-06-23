@@ -206,10 +206,10 @@
       "type": "date",
       "level": 3,
       "chapterId": "c_1781706009121",
-      "date": "1924",
+      "explanation": "À la mort de Lénine, Staline alors secrétaire général du parti communiste prend le pouvoir en URSS.",
+      "date": "1924 - 1953",
       "dateFormat": "Année",
-      "event": "Staline au pouvoir en URSS",
-      "explanation": "À la mort de Lénine, Staline alors secrétaire général du parti communiste prend le pouvoir en URSS."
+      "event": "Staline au pouvoir"
     },
     {
       "id": "card_9_1781891694",
@@ -226,10 +226,10 @@
       "type": "date",
       "level": 1,
       "chapterId": "c_1781706009121",
-      "date": "30 Janvier 1933",
+      "explanation": "Hitler devient chancelier le 30 Janvier 1933 et meurt en tant que Führer en 1945.",
+      "date": "1933 - 1945",
       "dateFormat": "Jour Mois Année",
-      "event": "Hitler au pouvoir en Allemagne",
-      "explanation": "Hitler devient chancelier."
+      "event": "Hitler au pouvoir"
     },
     {
       "id": "card_11_1781891694",
@@ -401,7 +401,7 @@
       "type": "date",
       "level": 3,
       "chapterId": "c_1781706050600",
-      "date": "20 Juin 1940",
+      "date": "22 Juin 1940",
       "dateFormat": "Jour Mois Année",
       "event": "Armistice entre la France et l'Allemagne"
     },
@@ -518,7 +518,7 @@
       "chapterId": "c_1781706067786",
       "date": "1955",
       "dateFormat": "Année",
-      "event": "Conférence de Bendung"
+      "event": "Conférence de Bandung"
     },
     {
       "id": "card_41_1781891694",
@@ -700,10 +700,10 @@
       "type": "date",
       "level": 0,
       "chapterId": "c_1781706084849",
-      "date": "1995",
+      "explanation": "Libre circulation des personnes.",
+      "date": "1985",
       "dateFormat": "Année",
-      "event": "Création de l'espace Schengen.",
-      "explanation": "Libre circulation des personnes."
+      "event": "Création de l'espace Schengen."
     },
     {
       "id": "card_60_1781891694",
@@ -902,12 +902,12 @@
     },
     {
       "id": "card_80_1781891694",
-      "type": "plage",
+      "type": "date",
       "level": 3,
       "chapterId": "c_1781706123216",
       "date": "1986 - 1988 ET 1993-1995",
       "dateFormat": "Année",
-      "event": "Périodes de confrontation sous François Mitterrand"
+      "event": "Périodes de cohabitation sous François Mitterrand"
     },
     {
       "id": "card_81_1781891694",
@@ -1411,6 +1411,15 @@
       "explanation": "Ex. : « Des liquides rouges, jaunes, verts, bruns, de toutes les nuances. » Bel‑Ami, Guy de Maupassant.",
       "term": "L'accumulation",
       "definition": "Elle consiste à énumérer des éléments pour donner une impression de grande quantité ou pour insister sur un aspect."
+    },
+    {
+      "id": "card_1782229099895",
+      "type": "date",
+      "level": 1,
+      "chapterId": "c_1781705965808",
+      "date": "6 Avril 1917",
+      "dateFormat": "Jour Mois Année",
+      "event": "Entrée en guerre des États-Unis"
     }
   ]
 }
