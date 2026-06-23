@@ -1376,6 +1376,20 @@
         document.getElementById('fc-like').addEventListener('click', () => triggerSwipe('right'));
         document.getElementById('fc-dislike').addEventListener('click', () => triggerSwipe('left'));
 
+        document.addEventListener('keydown', (e) => {
+            if (event.key === 'ArrowRight') {
+                triggerSwipe('right')
+            } else if (event.key === 'ArrowLeft') {
+                triggerSwipe('left')
+            } else if ((event.key === 'ArrowDown') || (event.key === 'ArrowUp')) {
+                isFlipped = !isFlipped;
+                document.getElementById('flashcard-element').classList.toggle('flipped', isFlipped);
+                
+                // Relancer le rendu LaTeX au cas où le verso contient des formules
+                renderMath();
+            }
+        });
+
         function triggerSwipe(direction) {
             const slider = document.getElementById('card-slider');
             if(direction === 'right') {
