@@ -68,6 +68,16 @@
         "id": "t_1782297407853",
         "subjectId": "sub_1782295839758",
         "name": "Organisation et gestion de données"
+      },
+      {
+        "id": "t_1782298828589",
+        "subjectId": "sub_1782295839758",
+        "name": "Nombres et calculs"
+      },
+      {
+        "id": "t_1782299006824",
+        "subjectId": "sub_1782295839758",
+        "name": "Grandeurs et mesures"
       }
     ],
     "chapters": [
@@ -208,6 +218,24 @@
         "subjectId": "sub_1782295839758",
         "themeId": "t_1782297407853",
         "name": "Statistiques et Probabilités"
+      },
+      {
+        "id": "c_1782298834693",
+        "subjectId": "sub_1782295839758",
+        "themeId": "t_1782298828589",
+        "name": "Fonctions et Algèbre"
+      },
+      {
+        "id": "c_1782299024277",
+        "subjectId": "sub_1782295839758",
+        "themeId": "t_1782299006824",
+        "name": "Volumes des solides"
+      },
+      {
+        "id": "c_1782299252455",
+        "subjectId": "sub_1782295839758",
+        "themeId": "t_1782299006824",
+        "name": "Aires des figures planes"
       }
     ]
   },
@@ -1777,6 +1805,158 @@
       "explanation": "Permet de mesurer la dispersion ou l'écart des données d'une série statistique.",
       "formulaName": "Étendue",
       "formula": "$\\text{Étendue} = \\text{Valeur maximale} - \\text{Valeur minimale}$"
+    },
+    {
+      "id": "card_1782298812786",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782297413490",
+      "explanation": "Dans une situation d'équiprobabilité, la probabilité d'un événement $A$ est toujours un nombre compris entre 0 (impossible) et 1 (certain).",
+      "formulaName": "Probabilité",
+      "formula": "$P(A) = \\frac{\\text{Nombre d'issues favorables}}{\\text{Nombre total d'issues possibles}}$"
+    },
+    {
+      "id": "card_1782298867669",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782298834693",
+      "explanation": "$f(x) = ax$Sa représentation graphique est une droite qui passe par l'origine du repère. Traduit une situation de proportionnalité ($a$ est le coefficient).",
+      "formulaName": "Fonction linéaire",
+      "formula": "$f(x) = ax$"
+    },
+    {
+      "id": "card_1782298890802",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782298834693",
+      "explanation": "Sa représentation graphique est une droite. $a$ est le coefficient directeur, $b$ est l'ordonnée à l'origine.",
+      "formulaName": "Fonction affine",
+      "formula": "$f(x) = ax + b$"
+    },
+    {
+      "id": "card_1782298913404",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782298834693",
+      "explanation": "Graphiquement, l'image se lit sur l'axe des ordonnées ($y$).",
+      "formulaName": "Image par une fonction",
+      "formula": "La valeur de sortie obtenue pour un nombre donné en entrée. Si $f(x) = y$, alors $y$ est l'image de $x$."
+    },
+    {
+      "id": "card_1782298946569",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782298834693",
+      "explanation": "Graphiquement, l'antécédent se lit sur l'axe des abscisses ($x$). Un nombre peut avoir plusieurs antécédents.",
+      "formulaName": "Antécédent par une fonction",
+      "formula": "La valeur d'entrée qui permet d'obtenir un certain résultat. Si $f(x) = y$, alors $x$ est l'antécédent de $y$."
+    },
+    {
+      "id": "card_1782298974702",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782298834693",
+      "explanation": "Un produit de facteurs est nul si et seulement si l'un au moins des facteurs est nul. Donne souvent deux solutions.",
+      "formulaName": "Équation-produit nul",
+      "formula": "$(ax + b)(cx + d) = 0$<br>équivaut à :<br>$ax + b = 0 \\quad \\text{ou} \\quad cx + d = 0$"
+    },
+    {
+      "id": "card_1782299050736",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782299024277",
+      "explanation": "$L$ = longueur, $l$ = largeur, $h$ = hauteur.",
+      "formulaName": "Volume d'un pavé droit",
+      "formula": "$V = L \\times l \\times h$"
+    },
+    {
+      "id": "card_1782299111203",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782299024277",
+      "explanation": "Pour le cylindre de rayon $R$ : $V = \\pi \\times R^2 \\times h$.",
+      "formulaName": "Volume d'un prisme ou cylindre",
+      "formula": "$V = \\text{Aire}_\\text{base} \\times h$"
+    },
+    {
+      "id": "card_1782299174326",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782299024277",
+      "explanation": "Le volume d'une pyramide ou d'un cône est le tiers de celui d'un prisme ou cylindre de même base et même hauteur.",
+      "formulaName": "Volume d'une pyramide ou cône",
+      "formula": "$V = \\frac{\\text{Aire de la base} \\times h}{3}$"
+    },
+    {
+      "id": "card_1782299202469",
+      "type": "formula",
+      "level": 2,
+      "chapterId": "c_1782299024277",
+      "explanation": "$R$ est le rayon de la sphère/boule. Attention, le rayon est au cube ($R^3$).",
+      "formulaName": "Volume d'une sphère",
+      "formula": "$V = \\frac{4}{3} \\times \\pi \\times R^3$"
+    },
+    {
+      "id": "card_1782299278319",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782299252455",
+      "explanation": "$c$ est la longueur d'un côté du carré.",
+      "formulaName": "Aire d'un carré",
+      "formula": "$\\mathcal{A} = c \\times c = c^2$"
+    },
+    {
+      "id": "card_1782299292086",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782299252455",
+      "explanation": "$L$ est la longueur et $l$ est la largeur du rectangle.",
+      "formulaName": "Aire d'un rectangle",
+      "formula": "$\\mathcal{A} = L \\times l$"
+    },
+    {
+      "id": "card_1782299321268",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782299252455",
+      "explanation": "$b$ est la longueur de la base et $h$ est la hauteur relative à cette base (perpendiculaire).",
+      "formulaName": "Aire d'un triangle",
+      "formula": "$\\mathcal{A} = \\frac{b \\times h}{2}$"
+    },
+    {
+      "id": "card_1782299344552",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782299252455",
+      "explanation": "$R$ est le rayon du disque. (Attention à ne pas confondre avec le périmètre $2 \\times \\pi \\times R$).",
+      "formulaName": "Aire d'un disque",
+      "formula": "$\\mathcal{A} = \\pi \\times R^2$"
+    },
+    {
+      "id": "card_1782299362802",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782299252455",
+      "formulaName": "Périmètre d'un cercle",
+      "formula": "$2 \\times \\pi \\times R$"
+    },
+    {
+      "id": "card_1782299384369",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782299252455",
+      "explanation": "$b$ est la longueur d'un côté (la base) et $h$ est la hauteur perpendiculaire à ce côté.",
+      "formulaName": "Aire d'un parallélogramme",
+      "formula": "$\\mathcal{A} = b \\times h$"
+    },
+    {
+      "id": "card_1782299406718",
+      "type": "formula",
+      "level": 2,
+      "chapterId": "c_1782299252455",
+      "explanation": "$B$ est la grande base, $b$ est la petite base (les deux côtés parallèles) et $h$ est la hauteur.",
+      "formulaName": "Aire d'un trapèze",
+      "formula": "$\\mathcal{A} = \\frac{(B + b) \\times h}{2}$"
     }
   ]
 }
