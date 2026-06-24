@@ -12,6 +12,10 @@
       {
         "id": "sub_1782231144626",
         "name": "Physique-Chimie"
+      },
+      {
+        "id": "sub_1782295839758",
+        "name": "Mathématiques"
       }
     ],
     "themes": [
@@ -54,6 +58,11 @@
         "id": "t_1782232960134",
         "subjectId": "sub_1782231144626",
         "name": "Des signaux pour observer et communiquer"
+      },
+      {
+        "id": "t_1782295846511",
+        "subjectId": "sub_1782295839758",
+        "name": "Géométrie"
       }
     ],
     "chapters": [
@@ -182,6 +191,12 @@
         "subjectId": "sub_1782231144626",
         "themeId": "t_1782232960134",
         "name": "Ondes sonores et lumineuses"
+      },
+      {
+        "id": "c_1782295860844",
+        "subjectId": "sub_1782295839758",
+        "themeId": "t_1782295846511",
+        "name": "Théorèmes fondamentaux et Trigonométrie"
       }
     ]
   },
@@ -1670,6 +1685,60 @@
       "explanation": "Vitesse de propagation d'une onde sonore dans l'air à température ambiante. Le son a besoin d'un milieu matériel pour se propager (il ne se propage pas dans le vide).",
       "formulaName": "Vitesse du son dans l'air",
       "formula": "$v_{\\text{son}} \\approx 340 \\text{ m/s}$"
+    },
+    {
+      "id": "card_1782295909711",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782295860844",
+      "explanation": "Permet de calculer la longueur d'un côté d'un triangle rectangle quand on connaît les deux autres.",
+      "formulaName": "Théorème de Pythagore",
+      "formula": "Dans un triangle $ABC$ rectangle en $A$ :<br>$BC^2 = AB^2 + AC^2$"
+    },
+    {
+      "id": "card_1782295996764",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782295860844",
+      "explanation": "Permet de prouver qu'un triangle est rectangle.",
+      "formulaName": "Réciproque de Pythagore",
+      "formula": "Si dans un triangle $ABC$, le plus grand côté vérifie <br> $BC^2 = AB^2 + AC^2$, alors le triangle est rectangle en $A$."
+    },
+    {
+      "id": "card_1782296045241",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782295860844",
+      "explanation": "Permet de calculer des longueurs dans une configuration en triangles emboîtés ou en \"papillon\".",
+      "formulaName": "Théorème de Thalès",
+      "formula": "Si deux droites $(BM)$ et $(CN)$ sont sécantes en $A$ et si les droites $(BC)$ et $(MN)$ sont parallèles, alors :<br>$\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}$"
+    },
+    {
+      "id": "card_1782296077074",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782295860844",
+      "explanation": "Rapport de trigonométrie dans un triangle rectangle. Utile pour trouver un angle ou une longueur.",
+      "formulaName": "Cosinus",
+      "formula": "$\\cos(\\widehat{X}) = \\frac{\\text{Côté adjacent}}{\\text{Hypoténuse}}$"
+    },
+    {
+      "id": "card_1782296130090",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782295860844",
+      "explanation": "Rapport de trigonométrie dans un triangle rectangle. Moyen mnémotechnique global : CAH SOH TOA.",
+      "formulaName": "Sinus",
+      "formula": "$\\sin(\\widehat{X}) = \\frac{\\text{Côté opposé}}{\\text{Hypoténuse}}$"
+    },
+    {
+      "id": "card_1782296146410",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782295860844",
+      "explanation": "Rapport de trigonométrie dans un triangle rectangle.",
+      "formulaName": "Tangente",
+      "formula": "$\\tan(\\widehat{X}) = \\frac{\\text{Côté opposé}}{\\text{Côté adjacent}}$"
     }
   ]
 }
