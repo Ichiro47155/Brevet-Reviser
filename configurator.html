@@ -786,7 +786,7 @@
             });
 
             // Gérer le changement du type de fiche de révision
-            document.getElementById('input-type').addEventListener('change', (e) => {
+            document.getElementById('input-type').addEventListener('input', (e) => {
                 onTypeChange(e.target.value);
             });
 
@@ -1660,6 +1660,8 @@
             toast.classList.add('show');
             setTimeout(() => { toast.classList.remove('show'); }, 3000);
         }
+        document.getElementById('input-type').value = "definition"
+        onTypeChange(document.getElementById('input-type').value)
     </script>
 </body>
 </html>
