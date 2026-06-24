@@ -1288,81 +1288,105 @@
 
         // --- MODE FLASHCARDS (AVEC SENS DE REVISION DYNAMIQUE ET OVERLAYS COLORÉS) ---
 
-        function showFlashcard() {
-            if(!currentFlashcardObj) {
-                if(firstPassQueue.length > 0) {
-                    currentFlashcardObj = firstPassQueue.shift();
-                } else if(reworkQueue.length > 0) {
-                    currentFlashcardObj = reworkQueue.shift();
-                } else {
-                    finishSession();
-                    return;
-                }
-            }
-
-            isFlipped = false;
-            const cardEl = document.getElementById('flashcard-element');
-            cardEl.classList.remove('flipped');
-
-            // Réinitialisation des opacités d'overlay
-            document.querySelectorAll('.swipe-overlay').forEach(ov => ov.style.opacity = '0');
-
-            // Couleur de pastille d'état
-            currentFlashcardObj.seenCount++;
-            let dotColor = 'var(--success-color)';
-            if (currentFlashcardObj.seenCount === 2) dotColor = '#f5c211';
-            else if (currentFlashcardObj.seenCount === 3) dotColor = '#ff7800';
-            else if (currentFlashcardObj.seenCount >= 4) dotColor = 'var(--error-color)';
-
-            document.getElementById('fc-badge-dot-front').style.backgroundColor = dotColor;
-            document.getElementById('fc-badge-dot-back').style.backgroundColor = dotColor;
-
-            const item = currentFlashcardObj.item;
-            const chap = (db.settings.chapters || []).find(c => c.id === item.chapterId);
-            const chapName = chap ? chap.name : 'Général';
-
-            // Afficher selon le type de fiche (Date, Définition, Formule)
-            if (item.type === 'definition') {
-                document.getElementById('fc-meta-front').textContent = `Définition — ${chapName}`;
-                document.getElementById('fc-question-text').textContent = item.definition;
-
-                document.getElementById('fc-meta-back').textContent = "Terme correspondant";
-                document.getElementById('fc-answer-text').innerHTML = `<span class="mathjax-render">${item.term}</span>`;
-            } else if (item.type === 'formula') {
-                document.getElementById('fc-meta-front').textContent = `Formule — ${chapName}`;
-                document.getElementById('fc-question-text').innerHTML = `<div class="formula-container mathjax-render">${item.formula}</div>`;
-
-                document.getElementById('fc-meta-back').textContent = "Nom de la formule";
-                document.getElementById('fc-answer-text').innerHTML = `<span class="mathjax-render" style="color:var(--accent-color)">${item.formulaName}</span>`;
-            } else {
-                let isEvtToDate = chosenDirection === 'evt-to-date';
-                if(chosenDirection === 'random') isEvtToDate = Math.random() > 0.5;
-
-                if (isEvtToDate) {
-                    document.getElementById('fc-meta-front').textContent = `Événement — ${chapName}`;
-                    document.getElementById('fc-question-text').textContent = item.event;
-                    document.getElementById('fc-meta-back').textContent = "Date attendue";
-                    document.getElementById('fc-answer-text').textContent = item.date;
-                } else {
-                    document.getElementById('fc-meta-front').textContent = `Date — ${chapName}`;
-                    document.getElementById('fc-question-text').textContent = item.date;
-                    document.getElementById('fc-meta-back').textContent = "Événement attendu";
-                    document.getElementById('fc-answer-text').textContent = item.event;
-                }
-            }
-
-            const expEl = document.getElementById('fc-explanation');
-            if(item.explanation) {
-                expEl.innerHTML = `<strong>Explication :</strong> ${item.explanation}`;
-                expEl.classList.remove('hidden');
-            } else {
-                expEl.classList.add('hidden');
-            }
-            
-            // Lancer le rendu LaTeX à chaque affichage de fiche
-            renderMath();
-            saveCurrentSessionState();
+function showFlashcard() {
+    if(!currentFlashcardObj) {
+        if(firstPassQueue.length > 0) {
+            currentFlashcardObj = firstPassQueue.shift();
+        } else if(reworkQueue.length > 0) {
+            currentFlashcardObj = reworkQueue.shift();
+        } else {
+            finishSession();
+            return;
         }
+    }
+
+    isFlipped = false;
+    const cardEl = document.getElementById('flashcard-element');
+    cardEl.classList.remove('flipped');
+
+    document.querySelectorAll('.swipe-overlay').forEach(ov => ov.style.opacity = '0');
+
+    currentFlashcardObj.seenCount++;
+    let dotColor = 'var(--success-color)';
+    if (currentFlashcardObj.seenCount === 2) dotColor = '#f5c211';
+    else if (currentFlashcardObj.seenCount === 3) dotColor = '#ff7800';
+    else if (currentFlashcardObj.seenCount >= 4) dotColor = 'var(--error-color)';
+
+    document.getElementById('fc-badge-dot-front').style.backgroundColor = dotColor;
+    document.getElementById('fc-badge-dot-back').style.backgroundColor = dotColor;
+
+    const item = currentFlashcardObj.item;
+    const chap = (db.settings.chapters || []).find(c => c.id === item.chapterId);
+    const chapName = chap ? chap.name : 'Général';
+
+    // Détermination du sens générique (Question -> Réponse)
+    let isQuestionToAnswer = chosenDirection === 'evt-to-date';
+    if (chosenDirection === 'random') isQuestionToAnswer = Math.random() > 0.5;
+
+    // ----------------------------------------------------
+    // TYPE : DÉFINITION
+    // ----------------------------------------------------
+    if (item.type === 'definition') {
+        if (isQuestionToAnswer) {
+            document.getElementById('fc-meta-front').textContent = `Définition — ${chapName}`;
+            document.getElementById('fc-question-text').textContent = item.definition;
+            document.getElementById('fc-meta-back').textContent = "Terme correspondant";
+            document.getElementById('fc-answer-text').innerHTML = `<span class="mathjax-render">${item.term}</span>`;
+        } else {
+            document.getElementById('fc-meta-front').textContent = `Terme — ${chapName}`;
+            document.getElementById('fc-question-text').innerHTML = `<span class="mathjax-render">${item.term}</span>`;
+            document.getElementById('fc-meta-back').textContent = "Définition correspondante";
+            document.getElementById('fc-answer-text').textContent = item.definition;
+        }
+
+    // ----------------------------------------------------
+    // TYPE : FORMULE
+    // ----------------------------------------------------
+    } else if (item.type === 'formula') {
+        if (isQuestionToAnswer) {
+            document.getElementById('fc-meta-front').textContent = `Formule — ${chapName}`;
+            document.getElementById('fc-question-text').innerHTML = `<div class="formula-container mathjax-render">${item.formula}</div>`;
+            document.getElementById('fc-meta-back').textContent = "Nom de la formule";
+            document.getElementById('fc-answer-text').innerHTML = `<span class="mathjax-render" style="color:var(--accent-color)">${item.formulaName}</span>`;
+        } else {
+            document.getElementById('fc-meta-front').textContent = `Nom de Formule — ${chapName}`;
+            document.getElementById('fc-question-text').innerHTML = `<span class="mathjax-render" style="color:var(--accent-color)">${item.formulaName}</span>`;
+            document.getElementById('fc-meta-back').textContent = "Formule correspondante";
+            document.getElementById('fc-answer-text').innerHTML = `<div class="formula-container mathjax-render">${item.formula}</div>`;
+        }
+
+    // ----------------------------------------------------
+    // TYPE : DATE / PLAGE DE DATES
+    // ----------------------------------------------------
+    } else {
+        // Pour les dates, on adapte l'ancienne variable au nouveau système de nommage
+        let isEvtToDate = chosenDirection === 'evt-to-date' || chosenDirection === 'evt-to-date';
+        if (chosenDirection === 'random') isEvtToDate = Math.random() > 0.5;
+
+        if (isEvtToDate) {
+            document.getElementById('fc-meta-front').textContent = `Événement — ${chapName}`;
+            document.getElementById('fc-question-text').textContent = item.event;
+            document.getElementById('fc-meta-back').textContent = "Date attendue";
+            document.getElementById('fc-answer-text').textContent = item.date;
+        } else {
+            document.getElementById('fc-meta-front').textContent = `Date — ${chapName}`;
+            document.getElementById('fc-question-text').textContent = item.date;
+            document.getElementById('fc-meta-back').textContent = "Événement attendu";
+            document.getElementById('fc-answer-text').textContent = item.event;
+        }
+    }
+
+    const expEl = document.getElementById('fc-explanation');
+    if(item.explanation) {
+        expEl.innerHTML = `<strong>Explication :</strong> ${item.explanation}`;
+        expEl.classList.remove('hidden');
+    } else {
+        expEl.classList.add('hidden');
+    }
+    
+    renderMath();
+    saveCurrentSessionState();
+}
 
         document.getElementById('flashcard-element').addEventListener('click', (e) => {
             if (e.target.closest('.round-action-btn') || isDragging) return;
@@ -1465,55 +1489,70 @@
 
         // --- INTERFACE : QUIZ INTERACTIF ---
 
-        function showQuizQuestion() {
-            if(currentIdx >= activeSession.length) {
-                finishSession();
-                return;
-            }
+function showQuizQuestion() {
+    if(currentIdx >= activeSession.length) {
+        finishSession();
+        return;
+    }
 
-            document.body.style.backgroundColor = "";
-            document.getElementById('quiz-feedback').classList.add('hidden');
-            document.getElementById('quiz-explanation').classList.add('hidden');
-            document.getElementById('quiz-controls').classList.add('hidden');
-            document.getElementById('quiz-control-group').classList.remove('hidden');
+    document.body.style.backgroundColor = "";
+    document.getElementById('quiz-feedback').classList.add('hidden');
+    document.getElementById('quiz-explanation').classList.add('hidden');
+    document.getElementById('quiz-controls').classList.add('hidden');
+    document.getElementById('quiz-control-group').classList.remove('hidden');
 
-            const answerInput = document.getElementById('quiz-answer-input');
-            answerInput.value = "";
-            answerInput.disabled = false;
-            document.getElementById('quiz-submit-btn').disabled = false;
+    const answerInput = document.getElementById('quiz-answer-input');
+    answerInput.value = "";
+    answerInput.disabled = false;
+    document.getElementById('quiz-submit-btn').disabled = false;
 
-            const item = activeSession[currentIdx];
-            const chap = (db.settings.chapters || []).find(c => c.id === item.chapterId);
-            const chapName = chap ? chap.name : 'Général';
-            document.getElementById('quiz-meta').textContent = `Question ${currentIdx + 1}/${activeSession.length} — ${chapName}`;
+    const item = activeSession[currentIdx];
+    const chap = (db.settings.chapters || []).find(c => c.id === item.chapterId);
+    const chapName = chap ? chap.name : 'Général';
+    document.getElementById('quiz-meta').textContent = `Question ${currentIdx + 1}/${activeSession.length} — ${chapName}`;
 
-            if(item.type === 'definition') {
-                document.getElementById('quiz-question-text').textContent = `Quel terme correspond à cette définition : "${item.definition}" ?`;
-                answerInput.placeholder = "Saisissez le terme...";
-            } else if(item.type === 'formula') {
-                // LaTeX : Le nom de la formule peut avoir du LaTeX, ou la formule elle-même.
-                document.getElementById('quiz-question-text').innerHTML = `Quelle formule correspond au nom suivant : <strong>"${item.formulaName}"</strong> ?`;
-                answerInput.placeholder = "Saisissez la notation...";
-            } else {
-                let isEvtToDate = chosenDirection === 'evt-to-date';
-                if(chosenDirection === 'random') isEvtToDate = Math.random() > 0.5;
+    // ----------------------------------------------------
+    // TYPE : DÉFINITION (Sens Unique : Définition -> Terme)
+    // ----------------------------------------------------
+    if(item.type === 'definition') {
+        document.getElementById('quiz-question-text').textContent = `Quel terme correspond à cette définition : "${item.definition}" ?`;
+        answerInput.placeholder = "Saisissez le terme...";
 
-                currentQuizDirection = isEvtToDate;
+    // ----------------------------------------------------
+    // TYPE : FORMULE (Sens Unique : Formule -> Nom)
+    // ----------------------------------------------------
+    } else if(item.type === 'formula') {
+        document.getElementById('quiz-question-text').innerHTML = `Quelle formule correspond au nom suivant : <strong>"${item.formulaName}"</strong> ?`;
+        answerInput.placeholder = "Saisissez la notation...";
 
-                if (isEvtToDate) {
-                    document.getElementById('quiz-question-text').textContent = `À quelle date correspond : "${item.event}" ?`;
-                    answerInput.placeholder = `Format requis : ${item.dateFormat}`;
-                } else {
-                    document.getElementById('quiz-question-text').textContent = `Quel événement s'est déroulé le : ${item.date} ?`;
-                    answerInput.placeholder = "Saisissez l'événement...";
-                }
-            }
-            answerInput.focus();
+    // ----------------------------------------------------
+    // TYPE : DATE / PLAGE DE DATES (Deux sens conservés)
+    // ----------------------------------------------------
+    } else {
+        let isEvtToDate = chosenDirection === 'evt-to-date' || chosenDirection === 'evt-to-date';
+        if(chosenDirection === 'random') isEvtToDate = Math.random() > 0.5;
+
+        currentQuizDirection = isEvtToDate;
+
+        if (isEvtToDate) {
+            document.getElementById('quiz-question-text').textContent = `À quelle date correspond : "${item.event}" ?`;
             
-            // Rendre le LaTeX sur la question du quiz
-            renderMath();
-            saveCurrentSessionState();
+            // Gestion du placeholder pour le format des plages de dates
+            if (item.dateFormatType === 'range' || (item.date && item.date.includes(' - '))) {
+                answerInput.placeholder = "Format : (JJ) (Mois) Année - (JJ) (Mois) Année";
+            } else {
+                answerInput.placeholder = `Format requis : ${item.dateFormat || 'JJ/MM/AAAA'}`;
+            }
+        } else {
+            document.getElementById('quiz-question-text').textContent = `Quel événement s'est déroulé le : ${item.date} ?`;
+            answerInput.placeholder = "Saisissez l'événement...";
         }
+    }
+    
+    answerInput.focus();
+    renderMath();
+    saveCurrentSessionState();
+}
 
         document.getElementById('quiz-submit-btn').addEventListener('click', checkQuizAnswer);
         document.getElementById('quiz-answer-input').addEventListener('keypress', (e) => {
