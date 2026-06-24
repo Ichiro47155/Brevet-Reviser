@@ -63,6 +63,11 @@
         "id": "t_1782295846511",
         "subjectId": "sub_1782295839758",
         "name": "Géométrie"
+      },
+      {
+        "id": "t_1782297407853",
+        "subjectId": "sub_1782295839758",
+        "name": "Organisation et gestion de données"
       }
     ],
     "chapters": [
@@ -197,6 +202,12 @@
         "subjectId": "sub_1782295839758",
         "themeId": "t_1782295846511",
         "name": "Théorèmes fondamentaux et Trigonométrie"
+      },
+      {
+        "id": "c_1782297413490",
+        "subjectId": "sub_1782295839758",
+        "themeId": "t_1782297407853",
+        "name": "Statistiques et Probabilités"
       }
     ]
   },
@@ -1739,6 +1750,33 @@
       "explanation": "Rapport de trigonométrie dans un triangle rectangle.",
       "formulaName": "Tangente",
       "formula": "$\\tan(\\widehat{X}) = \\frac{\\text{Côté opposé}}{\\text{Côté adjacent}}$"
+    },
+    {
+      "id": "card_1782297460116",
+      "type": "formula",
+      "level": 0,
+      "chapterId": "c_1782297413490",
+      "explanation": "Somme des données divisée par le nombre de données. Permet de résumer une série statistique.",
+      "formulaName": "Moyenne",
+      "formula": "$M = \\frac{\\text{Somme de toutes les valeurs}}{\\text{Effectif total}}$"
+    },
+    {
+      "id": "card_1782297493120",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782297413490",
+      "explanation": "50% des valeurs sont inférieures ou égales à la médiane, 50% sont supérieures ou égales.",
+      "term": "Médianne",
+      "definition": "Valeur qui partage une série statistique ordonnée en deux groupes de même effectif."
+    },
+    {
+      "id": "card_1782297521915",
+      "type": "formula",
+      "level": 1,
+      "chapterId": "c_1782297413490",
+      "explanation": "Permet de mesurer la dispersion ou l'écart des données d'une série statistique.",
+      "formulaName": "Étendue",
+      "formula": "$\\text{Étendue} = \\text{Valeur maximale} - \\text{Valeur minimale}$"
     }
   ]
 }
