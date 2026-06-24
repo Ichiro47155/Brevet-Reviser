@@ -1005,6 +1005,14 @@
             });
         }
 
+        // Event listener to search inputs
+        document.getElementById('table-search').addEventListener('input', (e) => {
+            renderConfigTable();
+        })
+        document.getElementById('level-search').addEventListener('input', (e) => {
+            renderConfigTable();
+        })
+        
         // --- RENDU ET PERSISTANCE DU TABLEAU DE DONNEES ---
         function renderConfigTable() {
             const query = document.getElementById('table-search').value.toLowerCase();
