@@ -1170,78 +1170,6 @@
       "explanation": "Le mariage pour les couples de même sexe est (enfin!) légalisé."
     },
     {
-      "id": "card_1782048342180",
-      "type": "definition",
-      "level": 0,
-      "chapterId": "c_1782047836602",
-      "explanation": "Complément d'Objet Direct. Exemple : Il compile le code. (« le code » est COD).",
-      "term": "COD",
-      "definition": "Groupe nominal ou pronom directement relié au verbe, sans préposition. Il répond à la question « Qui ? » ou « Quoi ? » posée après le verbe."
-    },
-    {
-      "id": "card_1782048383363",
-      "type": "definition",
-      "level": 0,
-      "chapterId": "c_1782047836602",
-      "explanation": "Complément d'Objet Indirect. Exemple : Il parle à son ami. (« à son ami » est COI).",
-      "term": "COI",
-      "definition": "Groupe nominal ou prépositionnel relié au verbe par une préposition (à, de). Il répond à la question « À qui ? », « À quoi ? », « De qui ? », « De quoi ? »."
-    },
-    {
-      "id": "card_1782048403179",
-      "type": "definition",
-      "level": 0,
-      "chapterId": "c_1782047836602",
-      "explanation": "Il commande l'accord du verbe en personne et en nombre. Exemple : Le serveur redémarre.",
-      "term": "Sujet",
-      "definition": "Mot ou groupe de mots qui réalise l'action ou subit l'état exprimé par le verbe. On le trouve en posant la question « Qui est-ce qui ? » ou « Qu'est-ce qui ? »."
-    },
-    {
-      "id": "card_1782048426779",
-      "type": "definition",
-      "level": 1,
-      "chapterId": "c_1782047836602",
-      "explanation": "Il s'accorde en genre et en nombre avec le sujet. Exemple : Ce langage paraît simple. (« simple » est attribut du sujet « Ce langage »).",
-      "term": "Attribut du sujet",
-      "definition": "Mot ou groupe de mots qui exprime une caractéristique ou une qualité du sujet par l'intermédiaire d'un verbe d'état (être, paraître, sembler, devenir, avoir l'air...)."
-    },
-    {
-      "id": "card_1782048447278",
-      "type": "definition",
-      "level": 1,
-      "chapterId": "c_1782047836602",
-      "explanation": "Elle fait partie du groupe nominal et peut être supprimée. Exemple : Une fonction puissante. (« puissante » est épithète de « fonction »).",
-      "term": "Épithète",
-      "definition": "Adjectif qualificatif placé directement à côté du nom qu'il qualifie (avant ou après), sans aucun mot intermédiaire."
-    },
-    {
-      "id": "card_1782048491781",
-      "type": "definition",
-      "level": 1,
-      "chapterId": "c_1782047836602",
-      "explanation": "= CDN\nIl appartient au groupe nominal. Exemple : Une carte de révision. (« de révision » est le CDN de « carte »).",
-      "term": "Complément du nom",
-      "definition": "Groupe de mots (souvent un nom ou un infinitif) introduit par une préposition (de, à, en...) qui vient préciser le sens d'un nom."
-    },
-    {
-      "id": "card_1782048604678",
-      "type": "definition",
-      "level": 2,
-      "chapterId": "c_1782047836602",
-      "explanation": "Exemple : Ce framework, un outil moderne, fait gagner du temps. (« un outil moderne » est mis en apposition au nom « framework »).",
-      "term": "Apposition",
-      "definition": "Mot ou groupe de mots (souvent un nom ou un adjectif) placé à côté du nom qu'il qualifie, mais séparé de lui par une virgule."
-    },
-    {
-      "id": "card_1782048632218",
-      "type": "definition",
-      "level": 0,
-      "chapterId": "c_1782047836602",
-      "explanation": "Exemple : Il révise tous les soirs (CC de temps) dans sa chambre (CC de lieu).",
-      "term": "Complément circonstanciel",
-      "definition": "Mot ou groupe de mots qui indique les circonstances de l'action (le temps, le lieu, la cause, le but, le moyen...). Il peut généralement être déplacé ou supprimé."
-    },
-    {
       "id": "card_1782048699344",
       "type": "definition",
       "level": 0,
@@ -1281,10 +1209,10 @@
       "id": "card_1782048791427",
       "type": "definition",
       "level": 0,
-      "chapterId": "c_1782048670864",
-      "explanation": "Exemples : que, parce que, puisque, quand, comme, si, pour que.",
-      "term": "Conjonction de subordination",
-      "definition": "Mot invariable qui sert à relier une proposition subordonnée à la proposition principale dont elle dépend."
+      "chapterId": "c_1782047836602",
+      "explanation": "Il commande l'accord du verbe. On le trouve en posant la question \"Qui est-ce qui... ?\" ou \"Qu'est-ce qui... ?\".",
+      "term": "Sujet",
+      "definition": "L'être ou la chose qui fait l'action ou est dans l'état décrit par le verbe."
     },
     {
       "id": "card_1782048848594",
@@ -1957,6 +1885,78 @@
       "explanation": "$B$ est la grande base, $b$ est la petite base (les deux côtés parallèles) et $h$ est la hauteur.",
       "formulaName": "Aire d'un trapèze",
       "formula": "$\\mathcal{A} = \\frac{(B + b) \\times h}{2}$"
+    },
+    {
+      "id": "card_1782309587117",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "Il est indissociable du verbe d'état. Si on supprime l'attribut, la phrase perd son sens ou devient incomplète.",
+      "term": "Attribut du sujet",
+      "definition": "Qualifie ou identifie le sujet par l'intermédiaire d'un verbe d'état (être, paraître, sembler, etc.)."
+    },
+    {
+      "id": "card_1782309604383",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "<strong>Complément d'Objet Direct</strong><br>Il subit l'action. On le trouve en posant la question \"Qui ?\" ou \"Quoi ?\" après le verbe.",
+      "term": "COD",
+      "definition": "Complète le verbe directement, sans préposition."
+    },
+    {
+      "id": "card_1782309620316",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "<strong>Complément d'Objet Indirect</strong><br>On le trouve en posant la question \"À qui ?\", \"À quoi ?\", \"De qui ?\", \"De quoi ?\" après le verbe.",
+      "term": "COI",
+      "definition": "Complète le verbe par l'intermédiaire d'une préposition (à, de...)."
+    },
+    {
+      "id": "card_1782309704983",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "<strong>Complément Circonstanciel</strong><br>Il est le plus souvent supprimable ou déplaçable. Il répond aux questions \"Quand ?\", \"Où ?\", \"Comment ?\", \"Pourquoi ?\".",
+      "term": "CC",
+      "definition": "Précise les circonstances de l'action (temps, lieu, manière, cause, etc.)."
+    },
+    {
+      "id": "card_1782309757499",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "Il est relié au nom par une préposition (ex: \"la voiture <em>de mon père</em>\"). Il fait partie du groupe nominal.",
+      "term": "Complément du Nom",
+      "definition": "Précise le sens d'un nom (ou pronom)."
+    },
+    {
+      "id": "card_1782309774949",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782047836602",
+      "explanation": "C'est généralement un adjectif qualificatif. Il est placé juste à côté du nom qu'il enrichit.",
+      "term": "Épithète",
+      "definition": "Qualifie directement le nom sans l'intermédiaire d'un verbe."
+    },
+    {
+      "id": "card_1782309796850",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782047836602",
+      "explanation": "Il apporte une information supplémentaire sur le nom et peut être supprimé sans changer la structure de la phrase.",
+      "term": "Apposition",
+      "definition": "Précise un nom en étant séparé par une virgule."
+    },
+    {
+      "id": "card_1782309825850",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782047836602",
+      "explanation": "Il complète l'adjectif (ex: \"heureux <em>de son succès</em>\"). Il est souvent introduit par une préposition.",
+      "term": "Complément de l'Adjectif",
+      "definition": "Précise le sens d'un adjectif."
     }
   ]
 }
