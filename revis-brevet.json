@@ -16,6 +16,10 @@
       {
         "id": "sub_1782295839758",
         "name": "Mathématiques"
+      },
+      {
+        "id": "sub_1782378309456",
+        "name": "Géographie"
       }
     ],
     "themes": [
@@ -78,6 +82,21 @@
         "id": "t_1782299006824",
         "subjectId": "sub_1782295839758",
         "name": "Grandeurs et mesures"
+      },
+      {
+        "id": "t_1782378322691",
+        "subjectId": "sub_1782378309456",
+        "name": "Dynamiques territoriales de la France contemporaine"
+      },
+      {
+        "id": "t_1782378543623",
+        "subjectId": "sub_1782378309456",
+        "name": "Pourquoi et comment aménager le territoire ?"
+      },
+      {
+        "id": "t_1782378729609",
+        "subjectId": "sub_1782378309456",
+        "name": "France et l'Union européenne dans le monde"
       }
     ],
     "chapters": [
@@ -236,6 +255,24 @@
         "subjectId": "sub_1782295839758",
         "themeId": "t_1782299006824",
         "name": "Aires des figures planes"
+      },
+      {
+        "id": "c_1782378332859",
+        "subjectId": "sub_1782378309456",
+        "themeId": "t_1782378322691",
+        "name": "Les aires urbaines et les espaces productifs"
+      },
+      {
+        "id": "c_1782378552387",
+        "subjectId": "sub_1782378309456",
+        "themeId": "t_1782378543623",
+        "name": "Les espaces de faible densité et l'aménagement du territoire"
+      },
+      {
+        "id": "c_1782378740246",
+        "subjectId": "sub_1782378309456",
+        "themeId": "t_1782378729609",
+        "name": "Union européenne et le rayonnement de la France"
       }
     ]
   },
@@ -546,10 +583,10 @@
       "type": "date",
       "level": 2,
       "chapterId": "c_1781706050600",
+      "explanation": "Le Gouvernement de Vichy impose le Service du Travail Obligatoire : réquisition et transfert forcé de milliers de jeunes travailleurs français vers l'Allemagne pour participer à l'effort de guerre nazi. Il a poussé de nombreux jeunes à entrer dans les maquis.",
       "date": "1943",
       "dateFormat": "Jour Mois Année",
-      "event": "STO",
-      "explanation": "Le Gouvernement de Vichy impose le STO."
+      "event": "STO"
     },
     {
       "id": "card_33_1781891694",
@@ -808,7 +845,7 @@
       "type": "date",
       "level": 0,
       "chapterId": "c_1781706084849",
-      "explanation": "Libre circulation des personnes.",
+      "explanation": "Libre circulation des personnes dans la majorité des pays de l'Union Européenne et quelques pays partenaires.",
       "date": "1985",
       "dateFormat": "Année",
       "event": "Création de l'espace Schengen."
@@ -1957,6 +1994,444 @@
       "explanation": "Il complète l'adjectif (ex: \"heureux <em>de son succès</em>\"). Il est souvent introduit par une préposition.",
       "term": "Complément de l'Adjectif",
       "definition": "Précise le sens d'un adjectif."
+    },
+    {
+      "id": "card_1782378362582",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782378332859",
+      "explanation": "Regroupe une grande partie de la population française. Exemple : L'aire urbaine de Paris ou de Lyon.",
+      "term": "Aire urbaine",
+      "definition": "Espace continu formé par un pôle urbain (ville-centre + banlieues) et par une couronne périurbaine."
+    },
+    {
+      "id": "card_1782378392353",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782378332859",
+      "explanation": "Liée à la recherche d'un cadre de vie plus calme et d'un logement moins cher. Entraîne des migrations pendulaires.",
+      "term": "Périurbanisation",
+      "definition": "Extension des espaces urbains à la périphérie des agglomérations, au détriment des espaces ruraux."
+    },
+    {
+      "id": "card_1782378428054",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782378332859",
+      "explanation": "Provoque d'importants embouteillages et nécessite des réseaux de transports performants.",
+      "term": "Migration pendulaire",
+      "definition": "Déplacement quotidien de la population entre son domicile (souvent en couronne périurbaine) et son lieu de travail (souvent en pôle urbain)."
+    },
+    {
+      "id": "card_1782378457955",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782378332859",
+      "explanation": "Les territoires français s'adaptent pour rester compétitifs face à la concurrence mondiale.",
+      "term": "Mondialisation",
+      "definition": "Processus d'accélération des flux matériels (marchandises), humains, financiers et d'informations à l'échelle mondiale, rendant les territoires interdépendants."
+    },
+    {
+      "id": "card_1782378476770",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378332859",
+      "explanation": "On distingue les espaces productifs agricoles, industriels et touristiques.",
+      "term": "Espace productif",
+      "definition": "Partie du territoire aménagée et développée pour la production de richesses (qu'elles soient industrielles, agricoles ou de services)."
+    },
+    {
+      "id": "card_1782378488404",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378332859",
+      "explanation": "Exemple : Toulouse (aéronautique) ou Grenoble (microélectronique).",
+      "term": "Technopôle",
+      "definition": "Ville ou parc d'activités qui regroupe des industries de haute technologie, des centres de recherche et des universités."
+    },
+    {
+      "id": "card_1782378612053",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782378552387",
+      "explanation": "Concerne principalement les espaces de montagne, le monde rural isolé et la \"<em>diagonale des faibles densités</em>\".",
+      "term": "Espace de faible densité",
+      "definition": "Espace dont la densité de population est inférieure à 30 habitants par km²."
+    },
+    {
+      "id": "card_1782378642521",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378552387",
+      "explanation": "Ils participent à la revitalisation démographique et économique de certains villages.",
+      "term": "Néo-ruraux",
+      "definition": "Habitants d'origine urbaine qui choisissent de s'installer en milieu rural à la recherche d'une meilleure qualité de vie."
+    },
+    {
+      "id": "card_1782378657304",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782378552387",
+      "explanation": "Mené par l'État, les collectivités territoriales et l'Union européenne.",
+      "term": "Aménagement du territoire",
+      "definition": "Action publique qui vise à organiser le territoire, à répartir les populations et les activités pour réduire les inégalités entre les régions."
+    },
+    {
+      "id": "card_1782378682720",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378552387",
+      "explanation": "Concerne particulièrement les DROM (Départements et Régions d'Outre-Mer).",
+      "term": "Discontinuité géographique",
+      "definition": "Rupture géographique ou rupture d'accès (liée à l'éloignement, l'insularité ou le relief) qui isole un territoire du reste du pays."
+    },
+    {
+      "id": "card_1782378711320",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378552387",
+      "explanation": "Territoires éloignés de la métropole mais possédant le même statut juridique et les mêmes lois que les régions françaises.",
+      "term": "DROM",
+      "definition": "Départements et Régions d'Outre-Mer (Guadeloupe, Martinique, Guyane, La Réunion, Mayotte)."
+    },
+    {
+      "id": "card_1782378764803",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378740246",
+      "explanation": "C'est le cœur économique de l'Union européenne.",
+      "term": "Mégalopole européenne",
+      "definition": "Zone urbaine à forte densité de population et d'activités économiques, qui s'étend de Londres à Milan en passant par la vallée du Rhin."
+    },
+    {
+      "id": "card_1782378792828",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1782378740246",
+      "explanation": "<strong>Zone Économique Exclusive</strong><br>\nGrâce à ses territoires d'outre-mer, la France possède la 2ème plus grande ZEE mondiale après les États-Unis.",
+      "term": "ZEE",
+      "definition": "Espace maritime s'étendant jusqu'à 370 km des côtes, sur lequel un État riverain dispose de droits exclusifs d'exploration et d'exploitation des ressources."
+    },
+    {
+      "id": "card_1782378855552",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378740246",
+      "explanation": "Représente un outil majeur du rayonnement culturel français à l'international.",
+      "term": "Francophonie",
+      "definition": "Ensemble des personnes qui partagent l'usage de la langue française à travers le monde."
+    },
+    {
+      "id": "card_1782379109085",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781705965808",
+      "explanation": "Les civils participent autant que les soldats à l'effort de guerre.",
+      "term": "Guerre totale",
+      "definition": "Conflit armé qui mobilise l'ensemble des ressources d'un État (humaines, économiques, technologiques et culturelles) pour remporter la victoire."
+    },
+    {
+      "id": "card_1782379129185",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1781705965808",
+      "explanation": "Fait référence à leurs conditions de vie rudes et au manque d'hygiène sur le front.",
+      "term": "Poilu",
+      "definition": "Surnom affectueux donné aux soldats français qui ont combattu dans les tranchées de la Première Guerre mondiale."
+    },
+    {
+      "id": "card_1782379147368",
+      "type": "definition",
+      "level": 3,
+      "chapterId": "c_1781705965808",
+      "explanation": "Symbole de la guerre de position (ou d'usure) qui s'installe dès la fin 1914.",
+      "term": "Tranchée",
+      "definition": "Fossé creusé dans le sol destiné à abriter les soldats des tirs de l'artillerie ennemie."
+    },
+    {
+      "id": "card_1782379211135",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781705965808",
+      "explanation": "Pendant la guerre, elle sert à masquer la réalité du front (surnommée le « bourrage de crâne »).",
+      "term": "Propagande",
+      "definition": "Ensemble d'actions psychologiques exercées par un pouvoir pour convaincre la population d'une idée ou d'une idéologie politique."
+    },
+    {
+      "id": "card_1782379274885",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781705965808",
+      "term": "Tripple Entente",
+      "definition": "France, Royaume-Uni et la Russie"
+    },
+    {
+      "id": "card_1782379303470",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781705965808",
+      "term": "Triple Alliance",
+      "definition": "Allemagne, Autriche-Hongrie, Italie"
+    },
+    {
+      "id": "card_1782379343580",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706032929",
+      "term": "L'Axe",
+      "definition": "Allemagne, Italie, Japon"
+    },
+    {
+      "id": "card_1782379393667",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706032929",
+      "explanation": "Et aussi la France jusqu'en 1940, puis la France Libre menée par De Gaulle.",
+      "term": "L'Alliance",
+      "definition": "Royaume-Uni, États-Unis, URSS"
+    },
+    {
+      "id": "card_1782379418317",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706009121",
+      "explanation": "Exemples : L'URSS de Staline et l'Allemagne nazie d'Hitler.",
+      "term": "Régime totalitaire",
+      "definition": "Régime politique à parti unique qui cherche à contrôler l'ensemble de la société et de la vie des individus par la terreur, la propagande et l'embrigadement."
+    },
+    {
+      "id": "card_1782379442900",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706009121",
+      "explanation": "En URSS, elle entraîne la fin de la propriété privée paysanne et la création des <em>kolkhozes</em>.",
+      "term": "Collectivisation",
+      "definition": "Politique visant à la mise en commun des moyens de production (notamment les terres agricoles) sous le contrôle de l'État."
+    },
+    {
+      "id": "card_1782379460536",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706009121",
+      "explanation": "C'est le pilier central de l'idéologie nazie d'Adolf Hitler.",
+      "term": "Antisémitisme",
+      "definition": "Doctrine ou attitude systématique de discrimination, de haine et de persécution dirigée contre les Juifs."
+    },
+    {
+      "id": "card_1782379475583",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706009121",
+      "explanation": "Dirigé par Léon Blum, il a mis en place les congés payés et la semaine de 40 heures.",
+      "term": "Front Populaire",
+      "definition": "Alliance électorale des partis de gauche (SFIO, Parti Communiste, Radicaux) qui gouverne la France de 1936 à 1938."
+    },
+    {
+      "id": "card_1782379514986",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706032929",
+      "explanation": "Elle efface la distinction entre l'avant (le front) et l'arrière.",
+      "term": "Guerre d'anéantissement",
+      "definition": "Conflit dont l'objectif est de détruire militairement, économiquement mais aussi physiquement et totalement l'adversaire (soldats comme civils)."
+    },
+    {
+      "id": "card_1782379549066",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706032929",
+      "explanation": "Aussi nommée Holocauste.<br>\nCaractérisé par une mise à mort industrielle (camps d'extermination).",
+      "term": "Shoah",
+      "definition": "Le génocide des Juifs d'Europe perpétré par les nazis durant la Seconde Guerre mondiale, faisant environ 6 millions de victimes."
+    },
+    {
+      "id": "card_1782379564916",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706032929",
+      "explanation": "Exemple : Auschwitz-Birkenau, Treblinka. À ne pas confondre avec un simple camp de concentration (travail forcé).",
+      "term": "Centre de mise à mort",
+      "definition": "Espace clos et fortifié destiné à l'assassinat immédiat et de masse des populations déportées (principalement Juifs et Tsiganes)."
+    },
+    {
+      "id": "card_1782379582066",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706050600",
+      "explanation": "Elle est à la fois économique, politique et policière (raves de Juifs par la police française).",
+      "term": "Collaboration",
+      "definition": "Politique d'aide et de coopération active menée par le régime de Vichy avec l'occupant nazi."
+    },
+    {
+      "id": "card_1782379604549",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706050600",
+      "explanation": "Elle s'est déployée à l'extérieur (De Gaulle) et à l'intérieur (Jean Moulin, maquis).",
+      "term": "Résistance",
+      "definition": "Ensemble des mouvements clandestins, des réseaux et des individus qui ont lutté contre l'occupation nazie et le régime de Vichy."
+    },
+    {
+      "id": "card_1782379713865",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706067786",
+      "explanation": "Elle s'est faite soit par la négociation (Inde), soit par la guerre (Algérie, Indochine).",
+      "term": "Décolonisation",
+      "definition": "Processus par lequel une colonie accède à l'indépendance politique vis-à-vis de sa métropole colonisatrice."
+    },
+    {
+      "id": "card_1782379740632",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706067786",
+      "explanation": "Née lors de la conférence de Bandung en 1955.",
+      "term": "Tiers-Monde",
+      "definition": "Expression désignant l'ensemble des pays pauvres ou en développement, souvent issus de la décolonisation, cherchant à s'affirmer durant la guerre froide."
+    },
+    {
+      "id": "card_1782379804516",
+      "type": "definition",
+      "level": 0,
+      "chapterId": "c_1781706075855",
+      "explanation": "Le conflit se déplace sur les terrains idéologique, technologique, culturel et spatial.",
+      "term": "Guerre froide",
+      "definition": "Période de fortes tensions (1947-1991) mais sans affrontement militaire direct entre les deux superpuissances : les États-Unis et l'URSS."
+    },
+    {
+      "id": "card_1782379842599",
+      "type": "definition",
+      "level": 3,
+      "chapterId": "c_1781706075855",
+      "explanation": "Le bloc de l'Est (communiste, Pacte de Varsovie) face au bloc de l'Ouest (capitaliste, OTAN).",
+      "term": "Monde bipolaire",
+      "definition": "Organisation géopolitique mondiale caractérisée par la division du monde en deux blocs rivaux, chacun dominé par une superpuissance."
+    },
+    {
+      "id": "card_1782379889335",
+      "type": "definition",
+      "level": 3,
+      "chapterId": "c_1781706084849",
+      "explanation": "L'ancêtre direct de l'Union européenne actuelle.",
+      "term": "CEE",
+      "definition": "Communauté Économique Européenne : marché commun créé en 1957 par le traité de Rome entre 6 pays d'Europe de l'Ouest."
+    },
+    {
+      "id": "card_1782380000182",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1781706094567",
+      "explanation": "Succède au monde bipolaire puis unipolaire après la chute de l'URSS. Ex: États-Unis, Chine, UE, Russie.",
+      "term": "Monde multipolaire",
+      "definition": "Organisation géopolitique mondiale actuelle caractérisée par la présence de plusieurs puissances majeures qui se partagent l'influence internationale."
+    },
+    {
+      "id": "card_1782380014752",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1781706094567",
+      "explanation": "Un enjeu majeur du XXIe siècle, marqué par les attentats du 11 septembre 2001.",
+      "term": "Terrorisme",
+      "definition": "Usage de la violence, de la terreur et des attentats par un groupe d'individus pour frapper l'opinion publique et faire pression sur un État."
+    },
+    {
+      "id": "card_1782380051965",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1781706115334",
+      "explanation": "Se traduit en France par la création de la Sécurité sociale en 1945 (santé, retraite, allocations).",
+      "term": "État-providence",
+      "definition": "Concept selon lequel l'État doit intervenir activement dans les domaines social et économique pour protéger les citoyens contre les risques de la vie."
+    },
+    {
+      "id": "card_1782380084598",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "explanation": "La Constitution de la Ve République a été adoptée en 1958.",
+      "term": "Constitution",
+      "definition": "Texte de loi fondamental qui organise et définit la répartition des pouvoirs (exécutif, législatif, judiciaire) au sein d'un État."
+    },
+    {
+      "id": "card_1782380100697",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "explanation": "Se produit pour la première fois sous la Ve République en 1981 avec l'élection de François Mitterrand.",
+      "term": "Alternance",
+      "definition": "Changement de majorité politique (passage de la droite à la gauche, ou inversement) à la tête de l'État lors d'une élection."
+    },
+    {
+      "id": "card_1782380122564",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706123216",
+      "explanation": "Arrive lorsque le Président perd les élections législatives et doit choisir un Premier ministre issu de la majorité adverse.",
+      "term": "Cohabitation",
+      "definition": "Situation politique dans laquelle le Président de la République et le Premier ministre appartiennent à des partis opposés."
+    },
+    {
+      "id": "card_1782380171564",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1781706130433",
+      "explanation": "Explique le rajeunissement massif de la population française durant les Trente Glorieuses.",
+      "term": "Baby-boom",
+      "definition": "Période de forte augmentation de la natalité observée en France (et dans d'autres pays occidentaux) entre 1945 et 1965."
+    },
+    {
+      "id": "card_1782380182714",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378740246",
+      "explanation": "Concerne principalement les années 1950 à 1974, avant la fermeture des frontières au travail suite aux crises économiques.",
+      "term": "Immigration de travail",
+      "definition": "Arrivée massive de travailleurs étrangers encouragée par l'État français pour répondre au manque de main-d'œuvre durant la reconstruction."
+    },
+    {
+      "id": "card_1782380209798",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782378332859",
+      "explanation": "Touche souvent les centres-villes anciens rénovés.",
+      "term": "Gentrification",
+      "definition": "Processus de transformation d'un quartier populaire par l'arrivée de populations plus aisées, entraînant la hausse des prix de l'immobilier."
+    },
+    {
+      "id": "card_1782380227948",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378332859",
+      "explanation": "Disparition progressive des activités industrielles et des usines d'un territoire ou d'un pays.",
+      "term": "Désindustrialisation",
+      "definition": "Disparition progressive des activités industrielles et des usines d'un territoire ou d'un pays."
+    },
+    {
+      "id": "card_1782380380832",
+      "type": "definition",
+      "level": 1,
+      "chapterId": "c_1782378332859",
+      "explanation": "C'est le nom officiel des technopôles labellisés par l'État français.",
+      "term": "Pôle de compétitivité",
+      "definition": "Regroupement sur un même territoire d'entreprises, de centres de recherche et d'universités pour développer des projets industriels innovants."
+    },
+    {
+      "id": "card_1782380395613",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782378332859",
+      "explanation": "Lié au développement du commerce maritime international mondialisé.",
+      "term": "Littoralisation",
+      "definition": "Processus de concentration des populations, des activités économiques et des infrastructures de transport sur les littoraux (les côtes)."
+    },
+    {
+      "id": "card_1782380407796",
+      "type": "definition",
+      "level": 2,
+      "chapterId": "c_1782378332859",
+      "explanation": "Favorise les grandes métropoles au détriment des villes moyennes ou petites.",
+      "term": "Métropolisation",
+      "definition": "Concentration des populations, des richesses et des fonctions de commandement (politiques, économiques, culturelles) dans les plus grandes villes."
     }
   ]
 }
